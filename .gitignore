@@ -1,0 +1,44 @@
+## Diretórios e Arquivos gerados pelo .NET
+/bin/
+/obj/
+
+/out/
+
+## Arquivos de configuração do usuário
+.idea/
+/.vs/
+/.vscode/
+
+## Arquivos de dependências do NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+
+## Arquivos de build
+*.dll
+*.exe
+*.pdb
+*.cache
+*.db
+*.bak
+
+## Arquivos de build gerados (após a execução do `dotnet publish`)
+publish/
+
+## Arquivos temporários
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.swp
+
+## Arquivos específicos do Visual Studio
+.vs2019/
+.vs2017/
+
+## Configurações de dependência do JetBrains Rider
+.idea/
+
+## Arquivos de log
+*.log
