@@ -1,13 +1,12 @@
 ## Diretórios e Arquivos gerados pelo .NET
-/bin/
-/obj/
+bin/
+obj/
 
-/out/
+out/
 
 ## Arquivos de configuração do usuário
-.idea/
-/.vs/
-/.vscode/
+.vs/
+.vscode/
 
 ## Arquivos de dependências do NuGet
 *.nupkg
@@ -36,9 +35,14 @@ publish/
 ## Arquivos específicos do Visual Studio
 .vs2019/
 .vs2017/
+.vs2022/
 
 ## Configurações de dependência do JetBrains Rider
 .idea/
-
-## Arquivos de log
+# Ignorar arquivos temporários
 *.log
+*.tmp
+*.bak
+
+# Ignorar a pasta .git
+.git/
