@@ -1,4 +1,5 @@
-﻿using talentbridge_webAPI.data;
+﻿using Microsoft.EntityFrameworkCore;
+using talentbridge_webAPI.data;
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
 

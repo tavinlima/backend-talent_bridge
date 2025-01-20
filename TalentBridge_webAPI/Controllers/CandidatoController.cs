@@ -31,7 +31,7 @@ namespace talentbridge_webAPI.Controllers
             }
         }
 
-        [HttpGet("/cpf")]
+        [HttpGet("{cpf}")]
         public async Task<IActionResult> GetByCpf(string cpf)
         {
             try
