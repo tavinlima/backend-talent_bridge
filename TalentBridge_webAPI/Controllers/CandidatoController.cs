@@ -12,7 +12,6 @@ namespace talentbridge_webAPI.Controllers
     {
         private ICandidatoRepository candidatoRepo { get; set; }
 
-
         public CandidatoController(ICandidatoRepository repo)
         {
             candidatoRepo = repo;

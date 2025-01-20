@@ -14,11 +14,13 @@ builder.Services.AddOpenApi();
 
 // Configura a string de conexão para o DbContext
 builder.Services.AddDbContext<TalentBridgeContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ICandidatoRepository, CandidatoRepository>();
-//builder.Services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+builder.Services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
 //builder.Services.AddScoped<IVagaRepository, VagaRepository>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>

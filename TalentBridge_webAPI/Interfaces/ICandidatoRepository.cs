@@ -1,5 +1,5 @@
 ﻿using talentbridge_webAPI.Domains;
-
+using talentbridge_webAPI.ViewModel;
 namespace talentbridge_webAPI.Interfaces
 {
     public interface ICandidatoRepository
@@ -13,7 +13,7 @@ namespace talentbridge_webAPI.Interfaces
         /// 
         /// </summary>
         /// <param name="candidato"></param>
-        void CreateCandidate(Candidato candidato);
+        void CreateCandidate(CadastroCandidato candidato);
         /// <summary>
         /// 
         /// </summary>
