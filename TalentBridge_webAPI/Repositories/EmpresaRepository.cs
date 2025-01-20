@@ -1,4 +1,5 @@
-﻿using talentbridge_webAPI.data;
+﻿using Microsoft.EntityFrameworkCore;
+using talentbridge_webAPI.data;
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.ViewModel;
@@ -9,10 +10,10 @@ namespace talentbridge_webAPI.Repositories
     {
         readonly TalentBridgeContext ctx = new();
         readonly IUsuarioRepository usuarioRepository;
-        public EmpresaRepository (TalentBridgeContext ctx, IUsuarioRepository usuarioRepo)
+        public EmpresaRepository (TalentBridgeContext ctx, IUsuarioRepository usuarioRepository)
         {
             this.ctx = ctx;
-            this.usuarioRepository = usuarioRepo;
+            this.usuarioRepository = usuarioRepository;
         }
 
         public async Task<Empresa> CreateEnterprise(CadastroEmpresa empresa)
@@ -56,7 +57,11 @@ namespace talentbridge_webAPI.Repositories
 
         public Task<List<Empresa>> GetAll()
         {
-            throw new NotImplementedException();
+            return ctx.Empresas.AsNoTracking()
+                .Include(e => e.IdUsuarioNavigation)
+                .Include(e => e.IdUsuarioNavigation.IdEnderecoNavigation)
+                .Include(e => e.IdUsuarioNavigation.IdContatoNavigation)
+                .ToListAsync();
         }
 
         public Task<Empresa> GetEnterpriseByCnpj(string Cnpj)

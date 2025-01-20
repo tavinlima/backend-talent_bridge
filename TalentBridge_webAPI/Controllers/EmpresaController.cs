@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.ViewModel;
 
@@ -22,6 +23,19 @@ namespace talentbridge_webAPI.Controllers
             try
             {
                 return Ok(await empresaRepo.CreateEnterprise(empresa));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                return Ok(await empresaRepo.GetAll());
             }
             catch (Exception error)
             {
