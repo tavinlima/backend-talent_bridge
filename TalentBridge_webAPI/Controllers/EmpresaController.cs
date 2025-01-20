@@ -42,5 +42,17 @@ namespace talentbridge_webAPI.Controllers
                 return BadRequest(error);
             }
         }
+        [HttpGet("{cnpj}")]
+        public async Task<IActionResult> GetByCnpj(string cnpj)
+        {
+            try
+            {
+                return Ok(await empresaRepo.GetEnterpriseByCnpj(cnpj));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
     }
 }

@@ -66,7 +66,11 @@ namespace talentbridge_webAPI.Repositories
 
         public Task<Empresa> GetEnterpriseByCnpj(string Cnpj)
         {
-            throw new NotImplementedException();
+            return ctx.Empresas.AsNoTracking()
+                .Include(e => e.IdUsuarioNavigation)
+                .Include(e => e.IdUsuarioNavigation.IdEnderecoNavigation)
+                .Include(e => e.IdUsuarioNavigation.IdContatoNavigation)
+                .FirstOrDefaultAsync( e => e.Cnpj == Cnpj);
         }
 
         public Task<Empresa> UpdateEnterprise(Empresa empresa)
