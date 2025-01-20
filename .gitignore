@@ -1,6 +1,6 @@
 ## Diretórios e Arquivos gerados pelo .NET
-bin/
-obj/
+bin
+obj
 
 out/
 

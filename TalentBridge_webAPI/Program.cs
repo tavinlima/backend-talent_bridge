@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 using talentbridge_webAPI.data;
 using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.Repositories;
@@ -16,8 +17,24 @@ builder.Services.AddDbContext<TalentBridgeContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<ICandidatoRepository, CandidatoRepository>();
+//builder.Services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+//builder.Services.AddScoped<IVagaRepository, VagaRepository>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+}); ;
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -26,7 +43,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.UseSwaggerUI(options =>
-    options.SwaggerEndpoint("/openapi/v1.json", "weather api"));
+    options.SwaggerEndpoint("/openapi/v1.json", "Talent Bridge API"));
 }
 
 app.UseHttpsRedirection();

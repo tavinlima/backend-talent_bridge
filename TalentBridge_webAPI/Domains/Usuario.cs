@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace talentbridge_webAPI.Domains;
@@ -17,11 +18,16 @@ public partial class Usuario
 
     public byte[]? FotoPerfil { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Candidato> Candidatos { get; set; } = new List<Candidato>();
 
+    [JsonIgnore]
     public virtual ICollection<Empresa> Empresas { get; set; } = new List<Empresa>();
 
+    [JsonIgnore]
     public virtual Contato? IdContatoNavigation { get; set; }
+
+    [JsonIgnore]
 
     public virtual Endereco? IdEnderecoNavigation { get; set; }
 }
