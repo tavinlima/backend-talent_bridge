@@ -8,6 +8,6 @@ namespace talentbridge_webAPI.Interfaces
     public interface IUsuarioRepository
     {
         List<Usuario> GetAll();
-        Task<Usuario> CreateUser(CadastroUsuario usuario;
+        Task<Usuario> CreateUser(CadastroUsuario usuario);
     }
 }

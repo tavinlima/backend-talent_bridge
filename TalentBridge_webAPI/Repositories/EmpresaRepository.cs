@@ -17,11 +17,11 @@ namespace talentbridge_webAPI.Repositories
 
         public async Task<Empresa> CreateEnterprise(CadastroEmpresa empresa)
         {
-            
+            using(var transaction = await ctx.Database.BeginTransactionAsync())
             try
             {
 
-                Usuario novoUsuario = await usuarioRepository.CreateUser(empresa.Usuario, transaction);
+                Usuario novoUsuario = await usuarioRepository.CreateUser(empresa.Usuario);
 
                 Empresa novaEmp = new()
                 {
@@ -36,13 +36,16 @@ namespace talentbridge_webAPI.Repositories
 
                 await ctx.SaveChangesAsync();
 
+                // Confirmar a transação
+                await transaction.CommitAsync();
 
                 return novaEmp;
 
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                 await transaction.RollbackAsync();
+                 throw new Exception(ex.Message);
             }
         }
 

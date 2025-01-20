@@ -22,7 +22,7 @@ namespace talentbridge_webAPI.Repositories
 
         public async Task<Usuario> CreateUser(CadastroUsuario usuario)
         {
-            using (var transaction = await ctx.Database.BeginTransactionAsync()) // Iniciando a transação assíncrona
+            // using (var transaction = await ctx.Database.BeginTransactionAsync()) // Iniciando a transação assíncrona
             {
                 try
                 {
@@ -32,7 +32,7 @@ namespace talentbridge_webAPI.Repositories
                         TipoContato = usuario.TipoContato,
                         Numero = usuario.NumContato
                     };
-                    Contato novoContato = await contatoRepository.CadastrarContato(contato);
+                    Contato novoContato = contatoRepository.CadastrarContato(contato);
 
                     // Criando o endereço
                     Endereco endereco = new()
@@ -47,7 +47,7 @@ namespace talentbridge_webAPI.Repositories
                         Pais = usuario.Pais,
                         TipoEndereco = usuario.TipoEndereco
                     };
-                    Endereco novoEndereco = await enderecoRepository.CadastrarEndereco(endereco);
+                    Endereco novoEndereco = enderecoRepository.CadastrarEndereco(endereco);
 
                     // Criando o usuário
                     Usuario user = new()
@@ -62,15 +62,13 @@ namespace talentbridge_webAPI.Repositories
                     await ctx.Usuarios.AddAsync(user);
                     await ctx.SaveChangesAsync();
 
-                    // Commit da transação após todas as operações
-                    await transaction.CommitAsync();
+                    
 
                     return user;
                 }
                 catch (Exception ex)
                 {
-                    // Rollback da transação em caso de erro
-                    await transaction.RollbackAsync();
+                    
                     throw new Exception(ex.Message);
                 }
             }

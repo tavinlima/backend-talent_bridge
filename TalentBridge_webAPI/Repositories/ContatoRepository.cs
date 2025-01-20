@@ -12,10 +12,10 @@ namespace talentbridge_webAPI.Repositories
             this.ctx = ctx;
         }
 
-        public async Task<Contato> CadastrarContato(Contato contato)
+        public Contato CadastrarContato(Contato contato)
         {
-            await ctx.Contatos.AddAsync(contato);
-            await ctx.SaveChangesAsync();
+            ctx.Contatos.Add(contato);
+            ctx.SaveChanges();
             return contato;
         }
     }

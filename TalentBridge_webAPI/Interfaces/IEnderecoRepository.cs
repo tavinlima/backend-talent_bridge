@@ -4,6 +4,6 @@ namespace talentbridge_webAPI.Interfaces
 {
     public interface IEnderecoRepository
     {
-        Task<Endereco> CadastrarEndereco(Endereco endereco);
+        Endereco CadastrarEndereco(Endereco endereco);
     }
 }

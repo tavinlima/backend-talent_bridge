@@ -4,6 +4,6 @@ namespace talentbridge_webAPI.Interfaces
 {
     public interface IContatoRepository
     {
-        Task<Contato> CadastrarContato(Contato contato);
+        Contato CadastrarContato(Contato contato);
     }
 }

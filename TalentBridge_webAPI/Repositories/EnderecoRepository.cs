@@ -12,10 +12,10 @@ namespace talentbridge_webAPI.Repositories
             this.ctx = ctx;
         }
 
-        public async Task<Endereco> CadastrarEndereco(Endereco endereco)
+        public Endereco CadastrarEndereco(Endereco endereco)
         {
-            await ctx.Enderecos.AddAsync(endereco);
-            await ctx.SaveChangesAsync();
+            ctx.Enderecos.Add(endereco);
+            ctx.SaveChanges();
             return endereco;
         }
     }
