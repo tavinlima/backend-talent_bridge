@@ -9,6 +9,7 @@ namespace talentbridge_webAPI.Interfaces
         Task<Empresa> CreateEnterprise(CadastroEmpresa empresa);
         Task<Empresa> UpdateEnterprise(Empresa empresa);
         Task<Empresa> GetEnterpriseByCnpj(string Cnpj);
-        void DeleteEnterprise(int id);
+        Task<Empresa> GetEnterpriseByEmail(string email);
+        Task<String> DeleteEnterprise(string Cnpj);
     }
 }

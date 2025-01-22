@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-using talentbridge_webAPI.data;
 using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.Repositories;
+using TalentBridge_webAPI.data;
 
 var builder = WebApplication.CreateBuilder(args);
 

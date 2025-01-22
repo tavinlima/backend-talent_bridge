@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using talentbridge_webAPI.Domains;
-using talentbridge_webAPI.data;
 using talentbridge_webAPI.Interfaces;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 

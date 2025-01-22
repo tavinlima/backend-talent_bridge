@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using talentbridge_webAPI.data;
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.ViewModel;
+using TalentBridge_webAPI.data;
 
 namespace talentbridge_webAPI.Repositories
 {

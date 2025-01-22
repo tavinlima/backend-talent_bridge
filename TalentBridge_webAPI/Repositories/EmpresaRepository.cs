@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using talentbridge_webAPI.data;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore;
+using System.Transactions;
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.ViewModel;
+using TalentBridge_webAPI.data;
 
 namespace talentbridge_webAPI.Repositories
 {
@@ -10,7 +12,7 @@ namespace talentbridge_webAPI.Repositories
     {
         readonly TalentBridgeContext ctx = new();
         readonly IUsuarioRepository usuarioRepository;
-        public EmpresaRepository (TalentBridgeContext ctx, IUsuarioRepository usuarioRepository)
+        public EmpresaRepository(TalentBridgeContext ctx, IUsuarioRepository usuarioRepository)
         {
             this.ctx = ctx;
             this.usuarioRepository = usuarioRepository;
@@ -18,41 +20,50 @@ namespace talentbridge_webAPI.Repositories
 
         public async Task<Empresa> CreateEnterprise(CadastroEmpresa empresa)
         {
-            using(var transaction = await ctx.Database.BeginTransactionAsync())
-            try
-            {
-
-                Usuario novoUsuario = await usuarioRepository.CreateUser(empresa.Usuario);
-
-                Empresa novaEmp = new()
+            using (var transaction = await ctx.Database.BeginTransactionAsync())
+                try
                 {
-                    Avaliacao = empresa.Avaliacao,
-                    Descricao = empresa.Descricao,
-                    Cnpj = empresa.CNPJ,
-                    IdUsuario = novoUsuario.IdUsuario
-                };
-                
 
-                await ctx.Empresas.AddAsync(novaEmp);
+                    Usuario novoUsuario = await usuarioRepository.CreateUser(empresa.Usuario);
+
+                    Empresa novaEmp = new()
+                    {
+                        Avaliacao = empresa.Avaliacao,
+                        Descricao = empresa.Descricao,
+                        Cnpj = empresa.CNPJ,
+                        IdUsuario = novoUsuario.IdUsuario
+                    };
+
+
+                    await ctx.Empresas.AddAsync(novaEmp);
+
+                    await ctx.SaveChangesAsync();
+
+                    // Confirmar a transação
+                    await transaction.CommitAsync();
+
+                    return novaEmp;
+
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    throw new Exception(ex.Message);
+                }
+        }
+
+        public async Task<String> DeleteEnterprise(string Cnpj)
+        {
+            Empresa empresaBuscada = await GetEnterpriseByCnpj(Cnpj);
+            if (empresaBuscada != null)
+            {
+                ctx.Remove(empresaBuscada);
 
                 await ctx.SaveChangesAsync();
 
-                // Confirmar a transação
-                await transaction.CommitAsync();
-
-                return novaEmp;
-
+                return "Empresa excluída com sucesso";
             }
-            catch (Exception ex)
-            {
-                 await transaction.RollbackAsync();
-                 throw new Exception(ex.Message);
-            }
-        }
-
-        public void DeleteEnterprise(int id)
-        {
-            throw new NotImplementedException();
+            return "Empresa não encontrada";
         }
 
         public Task<List<Empresa>> GetAll()
@@ -64,13 +75,22 @@ namespace talentbridge_webAPI.Repositories
                 .ToListAsync();
         }
 
-        public Task<Empresa> GetEnterpriseByCnpj(string Cnpj)
+        public async Task<Empresa> GetEnterpriseByCnpj(string Cnpj)
+        {
+            return await ctx.Empresas
+                .Include(e => e.IdUsuarioNavigation)
+                .Include(e => e.IdUsuarioNavigation).ThenInclude(u=> u.IdEnderecoNavigation)
+                .Include(e => e.IdUsuarioNavigation).ThenInclude(u => u.IdContatoNavigation)
+                .FirstOrDefaultAsync(e => e.Cnpj == Cnpj);
+        }
+
+        public Task<Empresa> GetEnterpriseByEmail(string email)
         {
             return ctx.Empresas.AsNoTracking()
                 .Include(e => e.IdUsuarioNavigation)
                 .Include(e => e.IdUsuarioNavigation.IdEnderecoNavigation)
                 .Include(e => e.IdUsuarioNavigation.IdContatoNavigation)
-                .FirstOrDefaultAsync( e => e.Cnpj == Cnpj);
+                .FirstOrDefaultAsync(e => e.IdUsuarioNavigation.Email == email);
         }
 
         public Task<Empresa> UpdateEnterprise(Empresa empresa)

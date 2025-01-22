@@ -11,7 +11,7 @@ namespace talentbridge_webAPI.Controllers
     [ApiController]
     public class EmpresaController : ControllerBase
     {
-        private IEmpresaRepository empresaRepo {get; set;}
+        private IEmpresaRepository empresaRepo { get; set; }
         public EmpresaController(IEmpresaRepository repo)
         {
             empresaRepo = repo;
@@ -22,6 +22,7 @@ namespace talentbridge_webAPI.Controllers
         {
             try
             {
+                //Inserir validação para tirar pontos e verificar se é valido
                 return Ok(await empresaRepo.CreateEnterprise(empresa));
             }
             catch (Exception error)
@@ -42,12 +43,28 @@ namespace talentbridge_webAPI.Controllers
                 return BadRequest(error);
             }
         }
+
         [HttpGet("{cnpj}")]
         public async Task<IActionResult> GetByCnpj(string cnpj)
         {
             try
             {
                 return Ok(await empresaRepo.GetEnterpriseByCnpj(cnpj));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(string cnpj)
+        {
+            try
+            {
+                await empresaRepo.DeleteEnterprise(cnpj);
+
+                return Ok("Empresa excluída com sucesso!");
             }
             catch (Exception error)
             {

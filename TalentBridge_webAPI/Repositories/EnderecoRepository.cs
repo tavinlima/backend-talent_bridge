@@ -1,6 +1,6 @@
-﻿using talentbridge_webAPI.data;
-using talentbridge_webAPI.Domains;
+﻿using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
+using TalentBridge_webAPI.data;
 
 namespace talentbridge_webAPI.Repositories
 {

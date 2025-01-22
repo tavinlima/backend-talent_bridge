@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using talentbridge_webAPI.Domains;
+using Microsoft.EntityFrameworkCore;
 
-namespace talentbridge_webAPI.data;
+namespace TalentBridge_webAPI.data;
 
 public partial class TalentBridgeContext : DbContext
 {
@@ -48,13 +48,7 @@ public partial class TalentBridgeContext : DbContext
     {
         modelBuilder.Entity<Aplicaco>(entity =>
         {
-            entity.HasKey(e => e.IdAplicacao).HasName("PK__Aplicaco__6C5677E8154FBD46");
-
-            entity.ToTable(tb =>
-                {
-                    tb.HasTrigger("TGR_ADD_OBS_CANDIDATURA");
-                    tb.HasTrigger("TGR_Avisar_Candidatos_Situacao");
-                });
+            entity.HasKey(e => e.IdAplicacao).HasName("PK__Aplicaco__6C5677E8D4683B83");
 
             entity.Property(e => e.IdAplicacao).HasColumnName("idAplicacao");
             entity.Property(e => e.Avaliacao)
@@ -94,7 +88,7 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Candidato>(entity =>
         {
-            entity.HasKey(e => e.Cpf).HasName("PK__Candidat__C1F897302CC4321B");
+            entity.HasKey(e => e.Cpf).HasName("PK__Candidat__C1F8973065306718");
 
             entity.ToTable("Candidato");
 
@@ -108,12 +102,13 @@ public partial class TalentBridgeContext : DbContext
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Candidatos)
                 .HasForeignKey(d => d.IdUsuario)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Candidato__idUsu__52593CB8");
         });
 
         modelBuilder.Entity<Certificacao>(entity =>
         {
-            entity.HasKey(e => e.IdCertificacao).HasName("PK__Certific__23C2554A9E50D6D4");
+            entity.HasKey(e => e.IdCertificacao).HasName("PK__Certific__23C2554A4853CEE3");
 
             entity.ToTable("Certificacao");
 
@@ -140,7 +135,7 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Contato>(entity =>
         {
-            entity.HasKey(e => e.IdContato).HasName("PK__Contato__278E896D6FBD7122");
+            entity.HasKey(e => e.IdContato).HasName("PK__Contato__278E896D75450ADA");
 
             entity.ToTable("Contato");
 
@@ -157,7 +152,7 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Empresa>(entity =>
         {
-            entity.HasKey(e => e.Cnpj).HasName("PK__Empresa__AA57D6B5AFED463D");
+            entity.HasKey(e => e.Cnpj).HasName("PK__Empresa__AA57D6B56CD920C5");
 
             entity.ToTable("Empresa");
 
@@ -177,12 +172,13 @@ public partial class TalentBridgeContext : DbContext
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Empresas)
                 .HasForeignKey(d => d.IdUsuario)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Empresa__idUsuar__5535A963");
         });
 
         modelBuilder.Entity<Endereco>(entity =>
         {
-            entity.HasKey(e => e.IdEndereco).HasName("PK__Endereco__E45B8B2735419B89");
+            entity.HasKey(e => e.IdEndereco).HasName("PK__Endereco__E45B8B2794F1B033");
 
             entity.ToTable("Endereco");
 
@@ -229,7 +225,7 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Escolaridade>(entity =>
         {
-            entity.HasKey(e => e.IdEscolaridade).HasName("PK__Escolari__074B135C640B8EEC");
+            entity.HasKey(e => e.IdEscolaridade).HasName("PK__Escolari__074B135CC6345AC2");
 
             entity.ToTable("Escolaridade");
 
@@ -257,7 +253,7 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Experiencium>(entity =>
         {
-            entity.HasKey(e => e.IdExperiencia).HasName("PK__Experien__77DCF2945CC5DBAB");
+            entity.HasKey(e => e.IdExperiencia).HasName("PK__Experien__77DCF294397262AE");
 
             entity.Property(e => e.IdExperiencia).HasColumnName("idExperiencia");
             entity.Property(e => e.Cpf)
@@ -283,7 +279,7 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Idioma>(entity =>
         {
-            entity.HasKey(e => e.IdIdioma).HasName("PK__Idioma__A96571FC0C3130A8");
+            entity.HasKey(e => e.IdIdioma).HasName("PK__Idioma__A96571FC1F4237B4");
 
             entity.ToTable("Idioma");
 
@@ -309,7 +305,7 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Projeto>(entity =>
         {
-            entity.HasKey(e => e.IdProjeto).HasName("PK__Projeto__8FCCED76EE56001D");
+            entity.HasKey(e => e.IdProjeto).HasName("PK__Projeto__8FCCED7646A3D7D3");
 
             entity.ToTable("Projeto");
 
@@ -337,7 +333,7 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Requisito>(entity =>
         {
-            entity.HasKey(e => e.IdRequisitos).HasName("PK__Requisit__894FA0C726F7F477");
+            entity.HasKey(e => e.IdRequisitos).HasName("PK__Requisit__894FA0C7D507D6A1");
 
             entity.Property(e => e.IdRequisitos).HasColumnName("idRequisitos");
             entity.Property(e => e.IdVaga).HasColumnName("idVaga");
@@ -353,7 +349,7 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Skill>(entity =>
         {
-            entity.HasKey(e => e.IdSkill).HasName("PK__Skills__C4CE4D6EA92F507A");
+            entity.HasKey(e => e.IdSkill).HasName("PK__Skills__C4CE4D6EF42652D1");
 
             entity.Property(e => e.IdSkill).HasColumnName("idSkill");
             entity.Property(e => e.Cpf)
@@ -377,11 +373,11 @@ public partial class TalentBridgeContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.IdUsuario).HasName("PK__Usuario__645723A6BED23132");
+            entity.HasKey(e => e.IdUsuario).HasName("PK__Usuario__645723A64B26A69B");
 
-            entity.ToTable("Usuario", tb => tb.HasTrigger("TGR_Notificar_Novos_Usuarios"));
+            entity.ToTable("Usuario");
 
-            entity.HasIndex(e => e.Email, "UQ__Usuario__AB6E6164E8227E32").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Usuario__AB6E61646AB13C7F").IsUnique();
 
             entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
             entity.Property(e => e.Email)
@@ -398,16 +394,18 @@ public partial class TalentBridgeContext : DbContext
 
             entity.HasOne(d => d.IdContatoNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdContato)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Usuario__idConta__4F7CD00D");
 
             entity.HasOne(d => d.IdEnderecoNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdEndereco)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Usuario__idEnder__4E88ABD4");
         });
 
         modelBuilder.Entity<Vaga>(entity =>
         {
-            entity.HasKey(e => e.IdVaga).HasName("PK__Vagas__02E6F4AA1DADF7C8");
+            entity.HasKey(e => e.IdVaga).HasName("PK__Vagas__02E6F4AAE1B89A90");
 
             entity.Property(e => e.IdVaga).HasColumnName("idVaga");
             entity.Property(e => e.Cnpj)
