@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
+using talentbridge_webAPI.ViewModel;
 
 namespace talentbridge_webAPI.Controllers
 {
@@ -42,6 +43,20 @@ namespace talentbridge_webAPI.Controllers
             catch (Exception error)
             {
                 return BadRequest(error.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromForm] CadastroCandidato candidato)
+        {
+            try
+            {
+                //Inserir validação para tirar pontos e verificar se é valido
+                return Ok(await candidatoRepo.CreateCandidate(candidato));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
             }
         }
     }

@@ -3,7 +3,7 @@
     public class CadastroCandidato
     {
         public string Cpf {  get; set; }
-        public DateTime DataNascimento { get; set; }
+        public DateOnly DataNascimento { get; set; }
         public CadastroUsuario Usuario { get; set; }
     }
 }

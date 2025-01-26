@@ -9,47 +9,44 @@ namespace talentbridge_webAPI.Repositories
     public class CandidatoRepository : ICandidatoRepository
     {
         readonly TalentBridgeContext ctx = new();
-        readonly IEnderecoRepository enderecoRepository;
-        readonly IContatoRepository contatoRepository;
+        private readonly IUsuarioRepository usuarioRepository;
 
-        public CandidatoRepository(TalentBridgeContext ctx)
+        public CandidatoRepository(TalentBridgeContext ctx, IUsuarioRepository usuarioRepository)
         {
             this.ctx = ctx;
+            this.usuarioRepository = usuarioRepository;
         }
 
-        public async void CreateCandidate(CadastroCandidato candidato)
+        public async Task<Candidato> CreateCandidate(CadastroCandidato candidato)
         {
-            //using var transaction = ctx.Database.BeginTransaction();
-            //try
-            //{
+            using (var transaction = await ctx.Database.BeginTransactionAsync())
+                try
+                {
 
-            //    Candidato candidato = new()
-            //    {
+                    Usuario novoUsuario = await usuarioRepository.CreateUser(candidato.Usuario);
 
-            //    }
+                    Candidato novoCandidato = new()
+                    {
+                        DataNascimento = candidato.DataNascimento,
+                        Cpf = candidato.Cpf,
+                        IdUsuario = novoUsuario.IdUsuario
+                    };
 
-            //    Usuario user = new()
-            //    {
-            //        Email = usuario.Email,
-            //        Nome = usuario.Nome,
-            //        IdContato = novoContato.IdContato,
-            //        IdEndereco = novoEndereco.IdEndereco
-            //    };
+                    await ctx.Candidatos.AddAsync(novoCandidato);
 
-            //    await ctx.Usuarios.AddAsync(user);
+                    await ctx.SaveChangesAsync();
 
-            //    await ctx.SaveChangesAsync();
+                    // Confirmar a transação
+                    await transaction.CommitAsync();
 
-            //    await transaction.CommitAsync();
+                    return novoCandidato;
 
-            //    return user;
-            //}
-            //catch (Exception ex)
-            //{
-            //    await transaction.RollbackAsync();
-            //    throw new Exception(ex.Message);
-            //}
-            throw new NotImplementedException();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    throw new Exception(ex.Message);
+                }
         }
 
         public void DeleteCandidate(int id)

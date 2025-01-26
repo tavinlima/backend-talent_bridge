@@ -13,7 +13,7 @@ namespace talentbridge_webAPI.Interfaces
         /// 
         /// </summary>
         /// <param name="candidato"></param>
-        void CreateCandidate(CadastroCandidato candidato);
+        Task<Candidato> CreateCandidate(CadastroCandidato candidato);
         /// <summary>
         /// 
         /// </summary>

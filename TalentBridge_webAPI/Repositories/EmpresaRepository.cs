@@ -10,8 +10,8 @@ namespace talentbridge_webAPI.Repositories
 {
     public class EmpresaRepository : IEmpresaRepository
     {
-        readonly TalentBridgeContext ctx = new();
-        readonly IUsuarioRepository usuarioRepository;
+        private readonly TalentBridgeContext ctx = new();
+        private readonly IUsuarioRepository usuarioRepository;
         public EmpresaRepository(TalentBridgeContext ctx, IUsuarioRepository usuarioRepository)
         {
             this.ctx = ctx;
