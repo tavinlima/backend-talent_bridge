@@ -1,0 +1,32 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using talentbridge_webAPI.Interfaces;
+using talentbridge_webAPI.ViewModel;
+
+namespace talentbridge_webAPI.Controllers
+{
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AplicacaoController : ControllerBase
+    {
+        private IAplicacaoRepository aplicacaoRepo { get; set; }
+        public AplicacaoController(IAplicacaoRepository repo) 
+        {
+            aplicacaoRepo = repo;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SeCandidatar([FromForm] CandidaturaViewModel candidatura)
+        {
+            try
+            {
+                return Ok(await aplicacaoRepo.Create(candidatura));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+    }
+}

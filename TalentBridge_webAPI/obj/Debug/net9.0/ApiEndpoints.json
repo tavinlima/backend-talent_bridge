@@ -1,5 +1,36 @@
 [
   {
+    "ContainingType": "talentbridge_webAPI.Controllers.AplicacaoController",
+    "Method": "SeCandidatar",
+    "RelativePath": "api/Aplicacao",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idVaga",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CPF",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DataCandidatura",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Situacao",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "talentbridge_webAPI.Controllers.CandidatoController",
     "Method": "GetAll",
     "RelativePath": "api/Candidato",

@@ -1,5 +1,6 @@
 ﻿using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
+using talentbridge_webAPI.ViewModel;
 using TalentBridge_webAPI.data;
 
 namespace talentbridge_webAPI.Repositories
@@ -7,18 +8,37 @@ namespace talentbridge_webAPI.Repositories
     public class AplicacaoRepository : IAplicacaoRepository
     {
         private readonly TalentBridgeContext ctx = new();
-        public AplicacaoRepository(TalentBridgeContext ctx)
+        private readonly ICandidatoRepository candRepo;
+        public AplicacaoRepository(TalentBridgeContext ctx, ICandidatoRepository candRepo)
         {
             this.ctx = ctx;
+            this.candRepo = candRepo;
         }
-        public Aplicaco Create(Aplicaco aplicaco)
+        public async Task<string> Create(CandidaturaViewModel candidatura)
         {
-            ctx.Aplicacoes.Add(aplicaco);
-            ctx.SaveChanges();
-            return aplicaco;
+            Candidato candidato = await candRepo.GetCandidateByCpf(candidatura.CPF);
+
+            if (candidato.Cpf != null)
+            {
+                Aplicaco novaAplicacao = new Aplicaco
+                {
+                    Cpf = candidato.Cpf,
+                    DataCandidatura = candidatura.DataCandidatura,
+                    IdVaga = candidatura.idVaga,
+                    Situacao = "Pendente"
+                };
+
+                ctx.Aplicacoes.Add(novaAplicacao);
+                
+                await ctx.SaveChangesAsync();
+
+                return "Candidatura realizada com sucesso!";
+            }
+
+            return "Ops! Houve um problema com sua candidatura.";
         }
 
-        public Aplicaco Delete(Aplicaco Id)
+        public string Delete(int Id)
         {
             throw new NotImplementedException();
         }

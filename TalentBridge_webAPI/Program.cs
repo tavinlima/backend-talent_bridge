@@ -21,7 +21,8 @@ builder.Services.AddScoped<ICandidatoRepository, CandidatoRepository>();
 builder.Services.AddScoped<IEmpresaRepository, EmpresaRepository>();
 builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
-//builder.Services.AddScoped<IVagaRepository, VagaRepository>();
+builder.Services.AddScoped<IVagaRepository, VagaRepository>();
+builder.Services.AddScoped<IAplicacaoRepository, AplicacaoRepository>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
