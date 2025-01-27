@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using System.Text.Json.Serialization;
 using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.Repositories;
@@ -23,6 +26,58 @@ builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
 builder.Services.AddScoped<IVagaRepository, VagaRepository>();
 builder.Services.AddScoped<IAplicacaoRepository, AplicacaoRepository>();
+
+// Configuração do JWT Bearer
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    // Parâmetros de validação do JWT
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        // Validação do emissor do token
+        ValidateIssuer = true,
+        ValidIssuer = "talentbridge_webapi",
+
+        // Validação do público do token
+        ValidateAudience = true,
+        ValidAudience = "talentbridge_webapi",
+
+        // Validação da chave de assinatura do token
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("sua_chave_secreta_de_32_bytes_de_tamanho_!!!")), // Sua chave secreta
+
+        // Validação da expiração do token
+        ValidateLifetime = true,
+
+        // Tolerância para expiração
+        ClockSkew = TimeSpan.FromMinutes(30)
+    };
+
+    // Se desejar, pode adicionar eventos customizados para falhas de autenticação
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine("Falha na autenticação: " + context.Exception.Message);
+            return Task.CompletedTask;
+        },
+        OnChallenge = context =>
+        {
+            context.HandleResponse(); // Não propaga o erro
+            context.Response.StatusCode = 401;
+            context.Response.ContentType = "application/json";
+            return Task.CompletedTask;
+        }
+    };
+});
+
+builder.Services.AddAuthorization(); // Necessário para habilitar a autorização
+
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
@@ -51,6 +106,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

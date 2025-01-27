@@ -43,7 +43,8 @@ namespace talentbridge_webAPI.Controllers
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
                     new Claim(JwtRegisteredClaimNames.Name, usuarioBuscado.Nome),
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
-                    new Claim(ClaimTypes.Role, "empresa")
+                    new Claim(ClaimTypes.Role, "empresa"),
+                    new Claim("role", "empresa" )
                 };
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("sua_chave_secreta_de_32_bytes_de_tamanho_!!!"));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -84,7 +85,8 @@ namespace talentbridge_webAPI.Controllers
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
                     new Claim(JwtRegisteredClaimNames.Name, usuarioBuscado.Nome),
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
-                    new Claim(ClaimTypes.Role, "candidato")
+                    new Claim(ClaimTypes.Role, "candidato"),
+                    new Claim("role", "candidato" )
                 };
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("sua_chave_secreta_de_32_bytes_de_tamanho_!!!"));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
