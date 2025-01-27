@@ -31,6 +31,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "talentbridge_webAPI.Controllers.AplicacaoController",
+    "Method": "darFeedback",
+    "RelativePath": "api/Aplicacao",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idAplicacao",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "feeback",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "talentbridge_webAPI.Controllers.CandidatoController",
     "Method": "GetAll",
     "RelativePath": "api/Candidato",

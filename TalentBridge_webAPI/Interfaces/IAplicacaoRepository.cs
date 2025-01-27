@@ -8,5 +8,7 @@ namespace talentbridge_webAPI.Interfaces
         Task<Aplicaco> GetCandidates(int Id);
         Task<string> Create(CandidaturaViewModel candidatura);
         string Delete(int Id);
+        Task<string> AdicionarFeedback(int idAplicacao, string feedback);
+        Task<Aplicaco> GetAplicacoById(int id);
     }
 }

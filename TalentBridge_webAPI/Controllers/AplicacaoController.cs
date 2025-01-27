@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.ViewModel;
@@ -17,11 +18,26 @@ namespace talentbridge_webAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles ="candidato")]
         public async Task<IActionResult> SeCandidatar([FromForm] CandidaturaViewModel candidatura)
         {
             try
             {
                 return Ok(await aplicacaoRepo.Create(candidatura));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
+        [HttpPatch]
+        //[Authorize(Roles = "candidato")]
+        public async Task<IActionResult> darFeedback(int idAplicacao, string feeback)
+        {
+            try
+            {
+                return Ok(await aplicacaoRepo.AdicionarFeedback(idAplicacao, feeback));
             }
             catch (Exception error)
             {
