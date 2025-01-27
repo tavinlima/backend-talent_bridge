@@ -15,6 +15,7 @@ public partial class Usuario
     public string Nome { get; set; } = null!;
 
     public string Email { get; set; } = null!;
+    public string Senha { get; set; } = null!;
 
     public byte[]? FotoPerfil { get; set; }
 

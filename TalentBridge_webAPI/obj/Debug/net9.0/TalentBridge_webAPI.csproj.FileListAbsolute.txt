@@ -528,3 +528,4 @@ C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\talentbridge_webAPI.genruntimeconfig.cache
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\ref\talentbridge_webAPI.dll
 C:\Users\Home\Downloads\backend-talent_bridge\talentbridge_webAPI\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Home\Downloads\backend-talent_bridge\talentbridge_webAPI\bin\Debug\net9.0\BCrypt.Net-Next.dll

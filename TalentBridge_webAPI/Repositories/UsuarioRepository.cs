@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Storage;
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
+using talentbridge_webAPI.Utils;
 using talentbridge_webAPI.ViewModel;
 using TalentBridge_webAPI.data;
 
@@ -77,6 +78,25 @@ namespace talentbridge_webAPI.Repositories
         public List<Usuario> GetAll()
         {
             return ctx.Usuarios.ToList();
+        }
+
+        public Usuario Login(string email, string senha)
+        {
+            var usuario = ctx.Usuarios.FirstOrDefault(u => u.Email == email);
+
+            if (usuario.Senha[0] != '$' && usuario.Senha.Length < 32)
+            {
+                usuario.Senha = Criptografia.GerarHash(usuario.Senha);
+                ctx.SaveChanges();
+            }
+
+            if (usuario != null)
+            {
+                bool confere = Criptografia.Comparar(senha, usuario.Senha);
+                if (confere) return usuario;
+            }
+
+            return null;
         }
     }
 }

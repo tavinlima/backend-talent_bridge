@@ -245,6 +245,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "talentbridge_webAPI.Controllers.LoginController",
+    "Method": "LoginCandidato",
+    "RelativePath": "api/Login/Candidato",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "talentbridge_webAPI.ViewModel.LoginViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.LoginController",
+    "Method": "LoginEmpresa",
+    "RelativePath": "api/Login/Empresa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "talentbridge_webAPI.ViewModel.LoginViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "talentbridge_webAPI.Controllers.SkillsController",
     "Method": "GetSkills",
     "RelativePath": "api/Skills",

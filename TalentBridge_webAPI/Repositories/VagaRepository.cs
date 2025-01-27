@@ -16,9 +16,12 @@ namespace talentbridge_webAPI.Repositories
             this.empresaRepository = empresaRepository;
             this.usuarioRepository = usuarioRepository;
         }
-        public Task<Vaga> Create(Vaga vaga)
+        public async Task<Vaga> Create(Vaga vaga)
         {
-            throw new NotImplementedException();
+            ctx.Vagas.Add(vaga);
+            await ctx.SaveChangesAsync();
+
+            return vaga;
         }
 
         public Task<Vaga> Delete(int Id)
@@ -26,10 +29,9 @@ namespace talentbridge_webAPI.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<Vaga> GetAll()
+        public async Task<List<Vaga>> GetAll()
         {
-            //Vaga vaga = ctx.v
-            throw new NotImplementedException();
+            return await ctx.Vagas.AsNoTracking().Include(e => e.CnpjNavigation).ThenInclude(e => e.IdUsuarioNavigation).ToListAsync();
         }
 
         public async Task<List<Vaga>> GetByCNPJ(string CNPJ)
