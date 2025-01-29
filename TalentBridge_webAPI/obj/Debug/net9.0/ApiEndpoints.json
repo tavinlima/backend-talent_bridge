@@ -183,7 +183,7 @@
       },
       {
         "Name": "Avaliacao",
-        "Type": "System.Decimal",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
@@ -262,6 +262,97 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.EmpresaController",
+    "Method": "Update",
+    "RelativePath": "api/Empresa",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CNPJ",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descricao",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Avaliacao",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Logradouro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumEnder",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Complemento",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Bairro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cidade",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.UF",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cep",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Pais",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoEndereco",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoContato",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumContato",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

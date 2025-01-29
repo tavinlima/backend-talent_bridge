@@ -63,7 +63,8 @@ namespace talentbridge_webAPI.Repositories
 
         public async Task<Aplicaco> GetAplicacoById(int id)
         {
-            return await ctx.Aplicacoes.FromSqlRaw($"SELECT idAplicacao, A.CPF, dataCandidatura, observacoes, A.avaliacao, feedback, situacao, V.CNPJ, dataInicio, DataFim, V.descricao, titulo, disponivel, modeloTrabalho, senioridade, UE.nome AS 'nome_empresa', UE.email AS 'email_empresa', E.descricao, uc.nome AS 'nome_candidato', uc.email AS 'email_candidato', dataNascimento FROM Aplicacoes A JOIN Vagas V ON A.idVaga = V.idVaga JOIN Candidato C ON A.CPF = C.CPF JOIN Empresa E ON V.CNPJ = E.CNPJ JOIN Usuario UE ON UE.idUsuario = E.idUsuario JOIN Usuario UC ON UC.idUsuario = C.idUsuario WHERE idAplicacao = {id}").ToListAsync();
+            throw new NotImplementedException();
+            //return await ctx.Aplicacoes.FromSqlRaw($"SELECT idAplicacao, A.CPF, dataCandidatura, observacoes, A.avaliacao, feedback, situacao, V.CNPJ, dataInicio, DataFim, V.descricao, titulo, disponivel, modeloTrabalho, senioridade, UE.nome AS 'nome_empresa', UE.email AS 'email_empresa', E.descricao, uc.nome AS 'nome_candidato', uc.email AS 'email_candidato', dataNascimento FROM Aplicacoes A JOIN Vagas V ON A.idVaga = V.idVaga JOIN Candidato C ON A.CPF = C.CPF JOIN Empresa E ON V.CNPJ = E.CNPJ JOIN Usuario UE ON UE.idUsuario = E.idUsuario JOIN Usuario UC ON UC.idUsuario = C.idUsuario WHERE idAplicacao = {id}").ToListAsync();
         }
 
         public Task<Aplicaco> GetCandidates(int Id)

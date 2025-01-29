@@ -19,7 +19,7 @@ namespace talentbridge_webAPI.Interfaces
         /// </summary>
         /// <param name="candidato"></param>
         /// <returns></returns>
-        Task<Candidato> UpdateCandidate(Candidato candidato);
+        Task<Candidato> UpdateCandidate(CadastroCandidato candidato);
         /// <summary>
         /// 
         /// </summary>

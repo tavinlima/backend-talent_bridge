@@ -77,25 +77,60 @@ namespace talentbridge_webAPI.Repositories
 
         public async Task<Empresa> GetEnterpriseByCnpj(string Cnpj)
         {
-            return await ctx.Empresas
+            return await ctx.Empresas.AsNoTracking()
                 .Include(e => e.IdUsuarioNavigation)
                 .Include(e => e.IdUsuarioNavigation).ThenInclude(u=> u.IdEnderecoNavigation)
                 .Include(e => e.IdUsuarioNavigation).ThenInclude(u => u.IdContatoNavigation)
                 .FirstOrDefaultAsync(e => e.Cnpj == Cnpj);
         }
 
-        public Task<Empresa> GetEnterpriseByEmail(string email)
+        public async Task<Empresa> GetEnterpriseByEmail(string email)
         {
-            return ctx.Empresas.AsNoTracking()
+            return await ctx.Empresas.AsNoTracking()
                 .Include(e => e.IdUsuarioNavigation)
                 .Include(e => e.IdUsuarioNavigation.IdEnderecoNavigation)
                 .Include(e => e.IdUsuarioNavigation.IdContatoNavigation)
                 .FirstOrDefaultAsync(e => e.IdUsuarioNavigation.Email == email);
         }
 
-        public Task<Empresa> UpdateEnterprise(Empresa empresa)
+        public async Task<Empresa> UpdateEnterprise(CadastroEmpresa empresa)
         {
-            throw new NotImplementedException();
+            using (var transaction = await ctx.Database.BeginTransactionAsync())
+                try
+                {
+
+                    Usuario novoUsuario = await usuarioRepository.UpdateUser(empresa.Usuario);
+
+                    Empresa empresaBuscada = await GetEnterpriseByCnpj(empresa.CNPJ);
+
+                    decimal? avaliacao = empresa.Avaliacao ?? empresaBuscada.Avaliacao;
+                    string descricao = empresa.Descricao ?? empresaBuscada.Descricao;
+                    string Cnpj = empresa.CNPJ ?? empresaBuscada.Cnpj;
+
+                    Empresa novaEmp = new()
+                    {
+                        Avaliacao = avaliacao,
+                        Descricao = descricao,
+                        Cnpj = Cnpj,
+                        IdUsuario = empresaBuscada.IdUsuario
+                    };
+
+
+                    ctx.Empresas.Update(novaEmp);
+
+                    await ctx.SaveChangesAsync();
+
+                    // Confirmar a transação
+                    await transaction.CommitAsync();
+
+                    return novaEmp;
+
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    throw new Exception(ex.Message);
+                }
         }
     }
 }

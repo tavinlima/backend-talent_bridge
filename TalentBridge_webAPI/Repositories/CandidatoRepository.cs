@@ -86,9 +86,36 @@ namespace talentbridge_webAPI.Repositories
                 .FirstOrDefaultAsync(c => c.Cpf == cpf) ?? throw new Exception("Candidato não encontrado. Tente com outro cpf"); ;
         }
 
-        public Task<Candidato> UpdateCandidate(Candidato candidato)
+        public async Task<Candidato> UpdateCandidate(CadastroCandidato candidato)
         {
-            throw new NotImplementedException();
+            using (var transaction = await ctx.Database.BeginTransactionAsync())
+                try
+                {
+
+                    Usuario novoUsuario = await usuarioRepository.UpdateUser(candidato.Usuario);
+
+                    Candidato novoCandidato = new()
+                    {
+                        DataNascimento = candidato.DataNascimento,
+                        Cpf = candidato.Cpf,
+                        IdUsuario = novoUsuario.IdUsuario
+                    };
+
+                    ctx.Candidatos.Update(novoCandidato);
+
+                    await ctx.SaveChangesAsync();
+
+                    // Confirmar a transação
+                    await transaction.CommitAsync();
+
+                    return novoCandidato;
+
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    throw new Exception(ex.Message);
+                }
         }
     }
 }
