@@ -391,6 +391,11 @@ public partial class TalentBridgeContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("nome");
+            entity.Property(e => e.Senha)
+                    .IsRequired()
+                    .HasMaxLength(256)
+                    .IsUnicode(false)
+                    .HasColumnName("senha");
 
             entity.HasOne(d => d.IdContatoNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdContato)

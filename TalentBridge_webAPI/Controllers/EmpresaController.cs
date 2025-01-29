@@ -57,6 +57,21 @@ namespace talentbridge_webAPI.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<IActionResult> Update([FromForm] CadastroEmpresa empresa)
+        {
+            try
+            {
+                await empresaRepo.UpdateEnterprise(empresa);
+
+                return Ok("Empresa excluída com sucesso!");
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
         [HttpDelete]
         public async Task<IActionResult> Delete(string cnpj)
         {
