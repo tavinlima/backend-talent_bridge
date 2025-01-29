@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using talentbridge_webAPI.Domains;
+﻿using Microsoft.AspNetCore.Mvc;
 using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.ViewModel;
 

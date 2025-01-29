@@ -14,12 +14,27 @@ namespace talentbridge_webAPI.Repositories
             this.ctx = ctx;
             this.candidatoRepository = candidatoRepository;
         }
-        public Skill Create(Skill skill)
+        public Skill Create(string cpf, string titulo, string descricao)
         {
-            ctx.Skills.Add(skill);
-            ctx.SaveChanges();
+            try
+            {
+                Skill skill = new Skill
+                {
+                    Cpf = cpf,
+                    Descricao = descricao,
+                    Titulo = titulo
+                };
 
-            return skill;
+                ctx.Skills.Add(skill);
+                ctx.SaveChanges();
+
+                return skill;
+            }
+            catch (Exception error)
+            {
+                throw new Exception(error.Message);
+            }
+            
         }
 
         public async Task<string> Delete(int Id)

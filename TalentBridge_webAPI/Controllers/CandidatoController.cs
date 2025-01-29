@@ -48,6 +48,7 @@ namespace talentbridge_webAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "candidato")]
         public async Task<IActionResult> Update([FromForm] CadastroCandidato candidato)
         {
             try
