@@ -64,7 +64,7 @@ namespace talentbridge_webAPI.Controllers
             {
                 await empresaRepo.UpdateEnterprise(empresa);
 
-                return Ok("Empresa excluída com sucesso!");
+                return Ok("Empresa atualizada com sucesso!");
             }
             catch (Exception error)
             {

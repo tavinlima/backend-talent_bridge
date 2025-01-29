@@ -47,6 +47,21 @@ namespace talentbridge_webAPI.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<IActionResult> Update([FromForm] CadastroCandidato candidato)
+        {
+            try
+            {
+                await candidatoRepo.UpdateCandidate(candidato);
+
+                return Ok("Candidato atualizado com sucesso!");
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CadastroCandidato candidato)
         {

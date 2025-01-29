@@ -92,13 +92,15 @@ namespace talentbridge_webAPI.Repositories
                 try
                 {
 
+                    Candidato candidatoBuscado = await GetCandidateByCpf(candidato.Cpf);
+
                     Usuario novoUsuario = await usuarioRepository.UpdateUser(candidato.Usuario);
 
                     Candidato novoCandidato = new()
                     {
                         DataNascimento = candidato.DataNascimento,
                         Cpf = candidato.Cpf,
-                        IdUsuario = novoUsuario.IdUsuario
+                        IdUsuario = candidatoBuscado.IdUsuario
                     };
 
                     ctx.Candidatos.Update(novoCandidato);
