@@ -31,7 +31,18 @@ namespace talentbridge_webAPI.Repositories
 
         public async Task<List<Vaga>> GetAll()
         {
-            return await ctx.Vagas.AsNoTracking().Include(e => e.CnpjNavigation).ThenInclude(e => e.IdUsuarioNavigation).ToListAsync();
+            try
+            {
+                return await ctx.Vagas.AsNoTracking()
+                    .Include(e => e.CnpjNavigation)
+                    .ThenInclude(e => e.IdUsuarioNavigation)
+                    .ToListAsync();
+            }
+            catch (Exception error)
+            {
+                throw new Exception(error.Message);
+            }
+            
         }
 
         public async Task<List<Vaga>> GetByCNPJ(string CNPJ)
