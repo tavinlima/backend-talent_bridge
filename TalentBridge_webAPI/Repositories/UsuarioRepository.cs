@@ -75,6 +75,29 @@ namespace talentbridge_webAPI.Repositories
             }
         }
 
+        public async Task<string> Delete(string email)
+        {
+            try
+            {
+                Usuario usuarioBuscado = await GetByEmail(email);
+
+                if (usuarioBuscado != null)
+                {
+                    ctx.Remove(usuarioBuscado);
+
+                    await ctx.SaveChangesAsync();
+
+                    return "Usuário excluído com sucesso";
+                }
+                return "Usuário não encontrada";
+            }
+            catch (Exception error)
+            {
+                return error.Message;
+            }
+            
+        }
+
         public List<Usuario> GetAll()
         {
             return ctx.Usuarios.ToList();

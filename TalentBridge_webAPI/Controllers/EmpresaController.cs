@@ -71,20 +71,5 @@ namespace talentbridge_webAPI.Controllers
                 return BadRequest(error);
             }
         }
-
-        [HttpDelete]
-        public async Task<IActionResult> Delete(string cnpj)
-        {
-            try
-            {
-                await empresaRepo.DeleteEnterprise(cnpj);
-
-                return Ok("Empresa excluída com sucesso!");
-            }
-            catch (Exception error)
-            {
-                return BadRequest(error);
-            }
-        }
     }
 }

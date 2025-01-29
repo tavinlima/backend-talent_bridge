@@ -13,5 +13,6 @@ namespace talentbridge_webAPI.Interfaces
         Task<Usuario> UpdateUser(CadastroUsuario usuario);
         Task<Usuario> GetByEmail(string email);
         Usuario Login(string email, string senha);
+        Task<string> Delete(string email);
     }
 }

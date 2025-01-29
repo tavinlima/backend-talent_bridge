@@ -443,22 +443,6 @@
   },
   {
     "ContainingType": "talentbridge_webAPI.Controllers.EmpresaController",
-    "Method": "Delete",
-    "RelativePath": "api/Empresa",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "cnpj",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "talentbridge_webAPI.Controllers.EmpresaController",
     "Method": "GetByCnpj",
     "RelativePath": "api/Empresa/{cnpj}",
     "HttpMethod": "GET",
@@ -622,6 +606,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.UsuariosController",
+    "Method": "Delete",
+    "RelativePath": "api/Usuarios",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

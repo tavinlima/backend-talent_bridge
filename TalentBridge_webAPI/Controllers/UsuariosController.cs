@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
+using talentbridge_webAPI.ViewModel;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace talentbridge_webAPI.Controllers
@@ -16,11 +17,11 @@ namespace talentbridge_webAPI.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        private IUsuarioRepository _usuarioRepository { get; set; }
+        private IUsuarioRepository usuarioRepository { get; set; }
 
         public UsuariosController(IUsuarioRepository repo)
         {
-            _usuarioRepository = repo;
+            usuarioRepository = repo;
         }
 
         // GET: api/Usuarios
@@ -29,13 +30,28 @@ namespace talentbridge_webAPI.Controllers
         {
             try
             {
-                return Ok(_usuarioRepository.GetAll());
+                return Ok(usuarioRepository.GetAll());
             }
             catch (Exception error)
             {
                 return BadRequest(error);
             }
             
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(string email)
+        {
+            try
+            {
+                await usuarioRepository.Delete(email);
+
+                return Ok("Usuário excluída com sucesso!");
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
         }
 
     }

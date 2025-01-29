@@ -49,9 +49,19 @@ namespace talentbridge_webAPI.Repositories
                 }
         }
 
-        public void DeleteCandidate(int id)
+        public async Task<string> DeleteCandidate(string cpf)
         {
-            throw new NotImplementedException();
+            Candidato candidatoBuscado = await GetCandidateByCpf(cpf);
+            if (candidatoBuscado != null)
+            {
+                ctx.Remove(candidatoBuscado);
+                
+
+                await ctx.SaveChangesAsync();
+
+                return "Candidato excluído com sucesso";
+            }
+            return "Candidato não encontrada";
         }
 
         public async Task<List<Candidato>> GetAll()

@@ -30,6 +30,6 @@ namespace talentbridge_webAPI.Interfaces
         /// 
         /// </summary>
         /// <param name="id"></param>
-        void DeleteCandidate(int id);
+        Task<string> DeleteCandidate(string cpf);
     }
 }
