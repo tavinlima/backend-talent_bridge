@@ -96,6 +96,15 @@ namespace talentbridge_webAPI.Repositories
                 .FirstOrDefaultAsync(c => c.Cpf == cpf) ?? throw new Exception("Candidato não encontrado. Tente com outro cpf"); ;
         }
 
+        public async Task<Candidato> GetCandidateByEmail(string email)
+        {
+            return await ctx.Candidatos.AsNoTracking()
+                .Include(e => e.IdUsuarioNavigation)
+                .Include(e => e.IdUsuarioNavigation.IdEnderecoNavigation)
+                .Include(e => e.IdUsuarioNavigation.IdContatoNavigation)
+                .FirstOrDefaultAsync(e => e.IdUsuarioNavigation.Email == email);
+        }
+
         public async Task<Candidato> UpdateCandidate(CadastroCandidato candidato)
         {
             using (var transaction = await ctx.Database.BeginTransactionAsync())

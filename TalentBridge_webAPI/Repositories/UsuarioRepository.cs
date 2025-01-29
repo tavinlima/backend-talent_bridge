@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
@@ -113,21 +114,29 @@ namespace talentbridge_webAPI.Repositories
 
         public Usuario Login(string email, string senha)
         {
-            var usuario = ctx.Usuarios.FirstOrDefault(u => u.Email == email);
-
-            if (usuario.Senha[0] != '$' && usuario.Senha.Length < 32)
+            try
             {
-                usuario.Senha = Criptografia.GerarHash(usuario.Senha);
-                ctx.SaveChanges();
-            }
+                var usuario = ctx.Usuarios.FirstOrDefault(u => u.Email == email);
 
-            if (usuario != null)
+                if (usuario != null && usuario.Senha[0] != '$' && usuario.Senha.Length < 32)
+                {
+                    usuario.Senha = Criptografia.GerarHash(usuario.Senha);
+                    ctx.SaveChanges();
+                }
+
+                if (usuario != null)
+                {
+                    bool confere = Criptografia.Comparar(senha, usuario.Senha);
+                    if (confere) return usuario;
+                }
+
+                return null;
+            }
+            catch (Exception error)
             {
-                bool confere = Criptografia.Comparar(senha, usuario.Senha);
-                if (confere) return usuario;
+                throw new Exception(error.Message);
             }
-
-            return null;
+            
         }
 
         public async Task<Usuario> UpdateUser(CadastroUsuario usuario)

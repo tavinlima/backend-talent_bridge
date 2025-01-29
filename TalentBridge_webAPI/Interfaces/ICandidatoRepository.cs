@@ -29,6 +29,12 @@ namespace talentbridge_webAPI.Interfaces
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="cpf"></param>
+        /// <returns></returns>
+        Task<Candidato> GetCandidateByEmail(string email);
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="id"></param>
         Task<string> DeleteCandidate(string cpf);
     }
