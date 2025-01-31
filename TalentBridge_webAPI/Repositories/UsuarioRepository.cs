@@ -56,6 +56,7 @@ namespace talentbridge_webAPI.Repositories
                     {
                         Email = usuario.Email,
                         Nome = usuario.Nome,
+                        Senha = usuario.Senha,
                         IdContato = novoContato.IdContato,
                         IdEndereco = novoEndereco.IdEndereco
                     };

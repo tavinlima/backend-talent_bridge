@@ -28,7 +28,6 @@ namespace talentbridge_webAPI.Repositories
 
                     Empresa novaEmp = new()
                     {
-                        Avaliacao = empresa.Avaliacao,
                         Descricao = empresa.Descricao,
                         Cnpj = empresa.CNPJ,
                         IdUsuario = novoUsuario.IdUsuario
@@ -103,13 +102,11 @@ namespace talentbridge_webAPI.Repositories
 
                     Empresa empresaBuscada = await GetEnterpriseByCnpj(empresa.CNPJ);
 
-                    decimal? avaliacao = empresa.Avaliacao ?? empresaBuscada.Avaliacao;
                     string descricao = empresa.Descricao ?? empresaBuscada.Descricao;
                     string Cnpj = empresa.CNPJ ?? empresaBuscada.Cnpj;
 
                     Empresa novaEmp = new()
                     {
-                        Avaliacao = avaliacao,
                         Descricao = descricao,
                         Cnpj = Cnpj,
                         IdUsuario = empresaBuscada.IdUsuario
