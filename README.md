@@ -70,7 +70,9 @@ Esta API REST construída em C# com .net 9 fornece uma interface para interagir 
 
 ## Running
 ## Como executar:
-- O primeiro passo é clonar esse repositório na sua máquina. Dê um git clone em uma pasta do seu computador e puxe todo o conteúdo do repositório;
+- O primeiro passo é clonar esse repositório na sua máquina. Dê um git clone em uma pasta do seu computador e puxe todo o conteúdo do repositório.
+- Comando a ser inserido: git clone https://github.com/tavinlima/backend-talent_bridge.git
+
 ![image](https://github.com/user-attachments/assets/be78ae9b-b603-46d2-9f48-2df63c1a48f0)
 ![image](https://github.com/user-attachments/assets/8912cec1-ccfd-4e38-8009-f8e762e286e8)
 
