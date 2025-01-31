@@ -22,8 +22,84 @@ Esta API REST construída em C# com .net 9 fornece uma interface para interagir 
   <img width="48" src="https://static.wikia.nocookie.net/logopedia/images/e/ec/Microsoft_Visual_Studio_2022.svg" alt="vs-logo"/>
 </p>
 
+<h3> Pre requisites </h3>
+
+<p>Para rodar esse projeto, você precisa ter os seguintes componentes instalados: </p>
+<ul>
+  <li>.Net 9</li>
+  <li>Visual Studio 2022</li>
+  <li>SQL Server</li>
+</ul>
+
 ## Features
-[EM ANDAMENTO]
+<h3>Funcionalidades desenvolvidas para esse projeto: </h3>
+
+<h4>Usuários (funcionalidades compartilhadas entre candidatos e empresas)</h4>
+<ul>
+  <li>Listagem de todos os usuários</li>
+  <li>Deletar usuário específico - exclusivo para usuários autenticados</li>
+  <li>Login</li>
+</ul>
+
+<h4>Candidatos</h4>
+<ul>
+  <li>Cadastro de candidatos</li>
+  <li>Atualização de dados</li>
+  <li>Listagem de todos os candidatos cadastrados</li>
+  <li>Busca de um candidato por CPF</li>
+  <li>Cadastro de skills - exclusivo para candidatos autenticados</li>
+</ul>
+
+<h4>Empresas</h4>
+<ul>
+  <li>Cadastro de empresa</li>
+  <li>Atualização de dados</li>
+  <li>Listagem de todos as empresas cadastradas</li>
+  <li>Busca de uma empresa por CNPJ</li>
+</ul>
+
+<h4>Vagas</h4>
+<ul>
+  <li>Listagem de todas as vagas</li>
+</ul>
+
+<h4>Aplicação (candidatura)</h4>
+<ul>
+  <li>Se candidatar - exclusivo para candidatos autenticados</li>
+</ul>
 
 ## Running
-[EM ANDAMENTO]
+## Como executar:
+- O primeiro passo é clonar esse repositório na sua máquina. Dê um git clone em uma pasta do seu computador e puxe todo o conteúdo do repositório.
+- Comando a ser inserido: git clone https://github.com/tavinlima/backend-talent_bridge.git
+
+![image](https://github.com/user-attachments/assets/be78ae9b-b603-46d2-9f48-2df63c1a48f0)
+![image](https://github.com/user-attachments/assets/8912cec1-ccfd-4e38-8009-f8e762e286e8)
+
+
+- Abra o Visual Studio na solução que se encontra na pasta 'backend-talent_bridge' -> 'TalentBridge_webAPI';
+![image](https://github.com/user-attachments/assets/6cee51e0-3a5c-46db-96a6-96fbf1e93223)
+
+
+- Entre na aba 'Ferramentas' -> Gerenciador de pacotes do NuGet -> Console do Gerenciador de Pacotes
+![image](https://user-images.githubusercontent.com/82414372/183323078-edf24338-f249-43bf-ae87-3b72bfb1f2aa.png)
+
+Digite o comando para criar o banco dentro da sua máquina:
+- update-database
+
+
+Para não sobrecarregar o processamento, feche a aplicação e a partir da barra de endereço da pasta onde se encontram os aquivos, abra o cmd e digite 'dotnet run' no console aberto.
+
+![image](https://github.com/user-attachments/assets/93ace113-a675-45cb-bdc1-b2e5dd02c440)
+
+![image](https://github.com/user-attachments/assets/840f571c-4aca-4b1b-a56c-4b3842501a5d)
+
+![image](https://github.com/user-attachments/assets/1d102a14-ec81-4f22-9125-c664855cc39f)
+
+![image](https://github.com/user-attachments/assets/708e819b-5ccf-4e34-948f-dd7d47c89de2)
+
+Tudo Ok! Vamos ao Swagger da aplicação:
+![image](https://github.com/user-attachments/assets/4be9e7cd-7b97-4c37-8eb0-a58b6e348664)
+
+
+
