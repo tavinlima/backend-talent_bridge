@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\buildMultiTargeting\talentbridge_webAPI.props" />
+  <Import Project="..\buildMultiTargeting\TalentBridge_webAPI.props" />
 </Project>
