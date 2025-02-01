@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Home\\Downloads\\backend-talent_bridge\\TalentBridge_webAPI\\talentbridge_webAPI.csproj": {}
+    "C:\\Users\\Home\\Downloads\\backend-talent_bridge\\TalentBridge_webAPI\\TalentBridge_webAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Home\\Downloads\\backend-talent_bridge\\TalentBridge_webAPI\\talentbridge_webAPI.csproj": {
+    "C:\\Users\\Home\\Downloads\\backend-talent_bridge\\TalentBridge_webAPI\\TalentBridge_webAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Home\\Downloads\\backend-talent_bridge\\TalentBridge_webAPI\\talentbridge_webAPI.csproj",
-        "projectName": "talentbridge_webAPI",
-        "projectPath": "C:\\Users\\Home\\Downloads\\backend-talent_bridge\\TalentBridge_webAPI\\talentbridge_webAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Home\\Downloads\\backend-talent_bridge\\TalentBridge_webAPI\\TalentBridge_webAPI.csproj",
+        "projectName": "TalentBridge_webAPI",
+        "projectPath": "C:\\Users\\Home\\Downloads\\backend-talent_bridge\\TalentBridge_webAPI\\TalentBridge_webAPI.csproj",
         "packagesPath": "C:\\Users\\Home\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Home\\Downloads\\backend-talent_bridge\\TalentBridge_webAPI\\obj\\",
         "projectStyle": "PackageReference",

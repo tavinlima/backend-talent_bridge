@@ -12,13 +12,6 @@ using Microsoft.AspNetCore.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Configuração de porta explícita
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(5000);  // Ouça na porta 5000
-});
-
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi(options =>
 {

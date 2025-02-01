@@ -1,7 +1,7 @@
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\bin\Debug\net9.0\appsettings.Development.json
-C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\bin\Debug\net9.0\appsettings.json
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\bin\Debug\net9.0\TalentBridge_webAPI.staticwebassets.endpoints.json
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\bin\Debug\net9.0\TalentBridge_webAPI.exe
+C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\bin\Debug\net9.0\appsettings.json
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\bin\Debug\net9.0\TalentBridge_webAPI.deps.json
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\bin\Debug\net9.0\TalentBridge_webAPI.runtimeconfig.json
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\bin\Debug\net9.0\TalentBridge_webAPI.dll
@@ -260,9 +260,9 @@ C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.TalentBridge_webAPI.props
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.TalentBridge_webAPI.props
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\staticwebassets.pack.json
+C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\TalentBr.85ACB716.Up2Date
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\TalentBridge_webAPI.dll
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\refint\TalentBridge_webAPI.dll
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\TalentBridge_webAPI.pdb
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\TalentBridge_webAPI.genruntimeconfig.cache
 C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\ref\TalentBridge_webAPI.dll
-C:\Users\Home\Downloads\backend-talent_bridge\TalentBridge_webAPI\obj\Debug\net9.0\TalentBr.85ACB716.Up2Date
