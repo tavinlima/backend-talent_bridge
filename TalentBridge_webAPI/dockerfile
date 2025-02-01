@@ -10,7 +10,7 @@ RUN ls -R /App
 RUN dotnet restore TalentBridge_webAPI.csproj
 
 # Copia o restante do código-fonte para o contêiner
-COPY . .
+# COPY . .
 
 # Build and publish a release
 RUN dotnet publish talentbridge_webAPI.sln -o out
