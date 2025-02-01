@@ -4,8 +4,9 @@ WORKDIR /App
 # Copy everything
  COPY . ./
 # COPY ["talentbridge_webAPI.sln", "./"]
-COPY ["talentbridge_webAPI.csproj", "./"]
 RUN ls -R /App
+COPY ["talentbridge_webAPI.csproj", "./"]
+
 # Restaura as dependências do projeto usando a solução
 RUN dotnet restore talentbridge_webAPI.sln 
 
