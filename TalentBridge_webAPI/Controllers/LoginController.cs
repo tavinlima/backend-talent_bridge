@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
-using talentbridge_webAPI.Repositories;
 using talentbridge_webAPI.ViewModel;
 
 namespace talentbridge_webAPI.Controllers

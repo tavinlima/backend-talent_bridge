@@ -1,6 +1,6 @@
 ## Diretórios e Arquivos gerados pelo .NET
-/bin
-/obj
+TalentBridge_webAPI/bin
+TalentBridge_webAPI/obj
 
 out/
 

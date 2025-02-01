@@ -14,12 +14,26 @@ namespace talentbridge_webAPI.Repositories
             this.ctx = ctx;
             this.candidatoRepository = candidatoRepository;
         }
-        public Idioma Create(Idioma idioma)
+        public Idioma Create(string CPF, string fluencia, string idioma)
         {
-            ctx.Idiomas.Add(idioma);
-            ctx.SaveChanges();
+            try
+            {
+                Idioma newIdioma = new Idioma
+                {
+                    Cpf = CPF,
+                    Fluencia = fluencia,
+                    Idioma1 = idioma
+                };
 
-            return idioma;
+                ctx.Idiomas.Add(newIdioma);
+                ctx.SaveChanges();
+
+                return newIdioma;
+            }
+            catch (Exception error)
+            {
+                throw new Exception(error.Message);
+            }
         }
 
         public async Task<string> Delete(int Id)
