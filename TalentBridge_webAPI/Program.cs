@@ -97,7 +97,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "https://backend-talent-bridge-kbiu.onrender.com/")
+        policy.WithOrigins("http://localhost:5173", "https://backend-talent-bridge-kbiu.onrender.com")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -109,6 +109,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    options.SwaggerEndpoint("/openapi/v1.json", "Talent Bridge API"));
+}
+else if (app.Environment.IsProduction())
+{
+    app.UseHttpsRedirection();
     app.MapOpenApi();
     app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/openapi/v1.json", "Talent Bridge API"));
