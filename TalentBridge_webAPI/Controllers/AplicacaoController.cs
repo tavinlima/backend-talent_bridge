@@ -18,6 +18,7 @@ namespace talentbridge_webAPI.Controllers
         }
 
         [HttpPost]
+        [Consumes("multipart/form-data")]
         [Authorize(Roles ="candidato")]
         public async Task<IActionResult> SeCandidatar([FromForm] CandidaturaViewModel candidatura)
         {
