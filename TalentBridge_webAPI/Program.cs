@@ -19,7 +19,7 @@ builder.Services.AddOpenApi(options =>
     options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0;
 });
 
-// Configura a string de conexão para o DbContext
+// Configura a string de conexï¿½o para o DbContext
 builder.Services.AddDbContext<TalentBridgeContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
 
@@ -36,7 +36,7 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 
-// Configuração do JWT Bearer
+// Configuraï¿½ï¿½o do JWT Bearer
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -44,39 +44,39 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    // Parâmetros de validação do JWT
+    // Parï¿½metros de validaï¿½ï¿½o do JWT
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        // Validação do emissor do token
+        // Validaï¿½ï¿½o do emissor do token
         ValidateIssuer = true,
         ValidIssuer = "talentbridge_webapi",
 
-        // Validação do público do token
+        // Validaï¿½ï¿½o do pï¿½blico do token
         ValidateAudience = true,
         ValidAudience = "talentbridge_webapi",
 
-        // Validação da chave de assinatura do token
+        // Validaï¿½ï¿½o da chave de assinatura do token
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("sua_chave_secreta_de_32_bytes_de_tamanho_!!!")), // Sua chave secreta
 
-        // Validação da expiração do token
+        // Validaï¿½ï¿½o da expiraï¿½ï¿½o do token
         ValidateLifetime = true,
 
-        // Tolerância para expiração
+        // Tolerï¿½ncia para expiraï¿½ï¿½o
         ClockSkew = TimeSpan.FromMinutes(30)
     };
 
-    // Se desejar, pode adicionar eventos customizados para falhas de autenticação
+    // Se desejar, pode adicionar eventos customizados para falhas de autenticaï¿½ï¿½o
     options.Events = new JwtBearerEvents
     {
         OnAuthenticationFailed = context =>
         {
-            Console.WriteLine("Falha na autenticação: " + context.Exception.Message);
+            Console.WriteLine("Falha na autenticaï¿½ï¿½o: " + context.Exception.Message);
             return Task.CompletedTask;
         },
         OnChallenge = context =>
         {
-            context.HandleResponse(); // Não propaga o erro
+            context.HandleResponse(); // Nï¿½o propaga o erro
             context.Response.StatusCode = 401;
             context.Response.ContentType = "application/json";
             return Task.CompletedTask;
@@ -84,7 +84,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization(); // Necessário para habilitar a autorização
+builder.Services.AddAuthorization(); // Necessï¿½rio para habilitar a autorizaï¿½ï¿½o
 
 builder.Services.AddEndpointsApiExplorer();
 

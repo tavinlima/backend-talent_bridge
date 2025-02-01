@@ -1,0 +1,548 @@
+[
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.AplicacaoController",
+    "Method": "SeCandidatar",
+    "RelativePath": "api/Aplicacao",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idVaga",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CPF",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DataCandidatura",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Situacao",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.AplicacaoController",
+    "Method": "darFeedback",
+    "RelativePath": "api/Aplicacao",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idAplicacao",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "feeback",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.CandidatoController",
+    "Method": "GetAll",
+    "RelativePath": "api/Candidato",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.CandidatoController",
+    "Method": "Update",
+    "RelativePath": "api/Candidato",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Cpf",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DataNascimento",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Senha",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Logradouro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumEnder",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Complemento",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Bairro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cidade",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.UF",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cep",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Pais",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoEndereco",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoContato",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumContato",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.CandidatoController",
+    "Method": "Create",
+    "RelativePath": "api/Candidato",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Cpf",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DataNascimento",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Senha",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Logradouro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumEnder",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Complemento",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Bairro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cidade",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.UF",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cep",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Pais",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoEndereco",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoContato",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumContato",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.CandidatoController",
+    "Method": "GetByCpf",
+    "RelativePath": "api/Candidato/{cpf}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.EmpresaController",
+    "Method": "CreateEnterprise",
+    "RelativePath": "api/Empresa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CNPJ",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descricao",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Senha",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Logradouro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumEnder",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Complemento",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Bairro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cidade",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.UF",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cep",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Pais",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoEndereco",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoContato",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumContato",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.EmpresaController",
+    "Method": "GetAll",
+    "RelativePath": "api/Empresa",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.EmpresaController",
+    "Method": "Update",
+    "RelativePath": "api/Empresa",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CNPJ",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descricao",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Senha",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Logradouro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumEnder",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Complemento",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Bairro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cidade",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.UF",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Cep",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.Pais",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoEndereco",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.TipoContato",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Usuario.NumContato",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.EmpresaController",
+    "Method": "GetByCnpj",
+    "RelativePath": "api/Empresa/{cnpj}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.LoginController",
+    "Method": "LoginEmpresa",
+    "RelativePath": "api/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "talentbridge_webAPI.ViewModel.LoginViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.SkillsController",
+    "Method": "PostSkill",
+    "RelativePath": "api/Skills",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "titulo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "descricao",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.UsuariosController",
+    "Method": "GetAll",
+    "RelativePath": "api/Usuarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.UsuariosController",
+    "Method": "Delete",
+    "RelativePath": "api/Usuarios",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "talentbridge_webAPI.Controllers.VagasController",
+    "Method": "GetAll",
+    "RelativePath": "api/Vagas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
