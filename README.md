@@ -69,7 +69,11 @@ Esta API REST construída em C# com .net 9 fornece uma interface para interagir 
 </ul>
 
 ## Running
-## Como executar:
+### Hosting
+Caso não queria clonar o repositório na sua máquina, a API pode ser facilmente acessada pelo link: https://backend-talent-bridge-kbiu.onrender.com/swagger/index.html
+
+O passo a seguir não é necessário caso acesse a API pelo link, porém caso queria baixar o repositório, segue instruções abaixo:
+### Como executar:
 - O primeiro passo é clonar esse repositório na sua máquina. Dê um git clone em uma pasta do seu computador e puxe todo o conteúdo do repositório.
 - Comando a ser inserido: git clone https://github.com/tavinlima/backend-talent_bridge.git
 
