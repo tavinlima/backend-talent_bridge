@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "jF4QFL+8VmDHe24D6xRgsPNikzT2PyoJVt0o/lGhbcs=",
+  "Source": "talentbridge_webAPI",
+  "BasePath": "_content/talentbridge_webAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
