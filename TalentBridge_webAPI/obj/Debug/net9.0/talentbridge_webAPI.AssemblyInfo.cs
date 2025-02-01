@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("talentbridge_webAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+626613feed139495e7b3e6cc7f806fcdd00813c2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98af883529386b5dd973371ede3a8c60bdda5657")]
 [assembly: System.Reflection.AssemblyProductAttribute("talentbridge_webAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("talentbridge_webAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

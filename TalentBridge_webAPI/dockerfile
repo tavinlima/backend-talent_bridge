@@ -2,9 +2,9 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0@sha256:3fcf6f1e809c0553f9feb222369f58749af
 WORKDIR /App
 
 # Copy everything
-# COPY . ./
-COPY ["talentbridge_webAPI.sln", "./"]
-COPY ["talentbridge_webAPI.csproj", "./"]
+ COPY . ./
+# COPY ["talentbridge_webAPI.sln", "./"]
+# COPY ["talentbridge_webAPI.csproj", "./"]
 
 # Restaura as dependências do projeto usando a solução
 RUN dotnet restore talentbridge_webAPI.sln
