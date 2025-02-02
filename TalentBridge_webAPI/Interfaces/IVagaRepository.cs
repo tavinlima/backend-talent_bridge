@@ -9,6 +9,7 @@ namespace talentbridge_webAPI.Interfaces
         Task<Vaga> Delete(int Id);
         Task<Vaga> GetById(int Id);
         Task<List<Vaga>> GetByCNPJ(string CNPJ);
+        Task<string> UpdateSituation(int Id);
 
     }
 }

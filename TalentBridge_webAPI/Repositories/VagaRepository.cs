@@ -2,6 +2,7 @@
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
 using TalentBridge_webAPI.data;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace talentbridge_webAPI.Repositories
 {
@@ -27,6 +28,32 @@ namespace talentbridge_webAPI.Repositories
         public Task<Vaga> Delete(int Id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<string> UpdateSituation(int Id)
+        {
+            try
+            {
+                Vaga vagaBuscada = await GetById(Id);
+
+                if (vagaBuscada != null)
+                {
+                    await ctx.Vagas
+                        .Where(x => x.IdVaga == Id)
+                        .ExecuteUpdateAsync(x => x.SetProperty(x => x.Disponivel, x => !x.Disponivel));
+
+                    return "Status alterado com sucesso!";
+                }
+
+                return "Ops! Não foi encontrad a avaga informada";
+            }
+            catch (Exception error)
+            {
+                throw new Exception(error.Message);
+            }
+            
+
+
         }
 
         public async Task<List<Vaga>> GetAll()

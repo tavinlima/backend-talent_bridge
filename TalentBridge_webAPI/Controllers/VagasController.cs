@@ -28,5 +28,18 @@ namespace talentbridge_webAPI.Controllers
                 return BadRequest(error);
             }
         }
+        [HttpPatch("{idVaga}")]
+        [Authorize(Roles = "empresa")]
+        public async Task<IActionResult> darFeedback(int idVaga)
+        {
+            try
+            {
+                return Ok(await vagaRepo.UpdateSituation(idVaga));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
     }
 }
