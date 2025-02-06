@@ -47,7 +47,7 @@ Esta API REST construída em C# com .net 9 fornece uma interface para interagir 
 
 <h4>Candidatos</h4>
 <ul>
-  <li>Cadastro de candidatos</li>
+  <li>Cadastro de candidatos (com criptografia de senha)</li>
   <li>Atualização de dados</li>
   <li>Listagem de todos os candidatos cadastrados</li>
   <li>Busca de um candidato por CPF</li>
@@ -56,7 +56,7 @@ Esta API REST construída em C# com .net 9 fornece uma interface para interagir 
 
 <h4>Empresas</h4>
 <ul>
-  <li>Cadastro de empresa</li>
+  <li>Cadastro de empresa (com criptografia de senha)</li>
   <li>Atualização de dados</li>
   <li>Listagem de todos as empresas cadastradas</li>
   <li>Busca de uma empresa por CNPJ</li>
