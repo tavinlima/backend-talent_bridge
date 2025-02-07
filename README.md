@@ -329,4 +329,32 @@ Tudo Ok! Vamos ao Swagger da aplicação:
   ]
 
 ```
+#### Login na aplicação
+
+```http
+  POST /api/Login
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `email` | `string` | **Obrigatório**. E-mail cadastrado para autenticação. |
+| `senha` | `string` | **Obrigatório**. Senha cadastrada para autenticação |
+
+![image](https://github.com/user-attachments/assets/da4a4123-7f59-457f-a98b-8926b62cc3ca)
+
+Resposta:
+200: 
+```bash
+"$id": "1",
+"tokenGerado": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlY3J1dGFtZW50b0B0eHRjLmNvbSIsIm5hbWUiOiJUWFQgQ3JpYcOnw7VlcyIsImp0aSI6IjEwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiZW1wcmVzYSIsInJvbGUiOiJlbXByZXNhIiwiZXhwIjoxNzM4ODkwMDk5LCJpc3MiOiJ0YWxlbnRicmlkZ2Vfd2ViYXBpIiwiYXVkIjoidGFsZW50YnJpZGdlX3dlYmFwaSJ9.ePFjWfMkKclBbCzpUgu-piM1bF2kb9HiU6x9Cr5YNyA"
+```
+Caso usuário inválido ou inexistente:
+404:
+```bash
+"E-mail ou senha inválidos!"
+```
+
+Copie o token gerado e cole no campo "Authorize" presente no topo da aplicação, com isso você poderá utilizar os métodos que são necessários de autenticação de acordo com o tipo de perfil.
+![image](https://github.com/user-attachments/assets/a5ddd417-cd0c-4e35-929b-c755eea417df)
+![image](https://github.com/user-attachments/assets/ab517c34-3335-4095-af48-2cfc86a27547)
 
