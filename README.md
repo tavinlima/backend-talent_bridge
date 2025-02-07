@@ -74,9 +74,9 @@ Esta API REST construída em C# com .net 9 fornece uma interface para interagir 
 
 ## Running
 ### Hosting
-Caso não queria clonar o repositório na sua máquina, a API pode ser facilmente acessada pelo link: https://backend-talent-bridge-kbiu.onrender.com/swagger/index.html
+Caso não queria clonar o repositório na sua máquina, a API pode ser facilmente acessada pelo link: https://backend-talent-bridge-kbiu.onrender.com/swagger/index.html Após acesso, pode pular direto para a sessão [Hands On](#Hands-on)
 
-O passo a seguir não é necessário caso acesse a API pelo link, porém caso queria baixar o repositório, segue instruções abaixo:
+O passo a seguir não é necessário caso acesse a API pelo link, porém caso queria baixar o repositório, siga as instruções abaixo:
 ### Como executar:
 - O primeiro passo é clonar esse repositório na sua máquina. Dê um git clone em uma pasta do seu computador e puxe todo o conteúdo do repositório.
 - Comando a ser inserido: git clone https://github.com/tavinlima/backend-talent_bridge.git
@@ -108,6 +108,37 @@ Para não sobrecarregar o processamento, feche a aplicação e a partir da barra
 
 Tudo Ok! Vamos ao Swagger da aplicação:
 ![image](https://github.com/user-attachments/assets/4be9e7cd-7b97-4c37-8eb0-a58b6e348664)
+
+# Hands-on
+
+#### Login na aplicação
+
+```http
+  POST /api/Login
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `email` | `string` | **Obrigatório**. E-mail cadastrado para autenticação. |
+| `senha` | `string` | **Obrigatório**. Senha cadastrada para autenticação |
+
+![image](https://github.com/user-attachments/assets/da4a4123-7f59-457f-a98b-8926b62cc3ca)
+
+Resposta:
+200: 
+```bash
+"$id": "1",
+"tokenGerado": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlY3J1dGFtZW50b0B0eHRjLmNvbSIsIm5hbWUiOiJUWFQgQ3JpYcOnw7VlcyIsImp0aSI6IjEwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiZW1wcmVzYSIsInJvbGUiOiJlbXByZXNhIiwiZXhwIjoxNzM4ODkwMDk5LCJpc3MiOiJ0YWxlbnRicmlkZ2Vfd2ViYXBpIiwiYXVkIjoidGFsZW50YnJpZGdlX3dlYmFwaSJ9.ePFjWfMkKclBbCzpUgu-piM1bF2kb9HiU6x9Cr5YNyA"
+```
+Caso usuário inválido ou inexistente:
+404:
+```bash
+"E-mail ou senha inválidos!"
+```
+
+Copie o token gerado e cole no campo "Authorize" presente no topo da aplicação, com isso você poderá utilizar os métodos que são necessários de autenticação de acordo com o tipo de perfil.
+![image](https://github.com/user-attachments/assets/a5ddd417-cd0c-4e35-929b-c755eea417df)
+![image](https://github.com/user-attachments/assets/ab517c34-3335-4095-af48-2cfc86a27547)
 
 - Funcionalidades de empresa:
 #### Cadastra a empresa no banco de dados
@@ -329,6 +360,8 @@ Tudo Ok! Vamos ao Swagger da aplicação:
   ]
 
 ```
+- Funcionalidades de candidato:
+
 #### Cadastra o candidato no banco de dados
 
 ```http
@@ -597,32 +630,19 @@ Tudo Ok! Vamos ao Swagger da aplicação:
 
 ```
 
-#### Login na aplicação
+#### Excluir um usuário do banco de dados (tanto candidatos quanto empresas)
 
 ```http
-  POST /api/Login
+  DELETE /api/Usuarios
 ```
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `email` | `string` | **Obrigatório**. E-mail cadastrado para autenticação. |
-| `senha` | `string` | **Obrigatório**. Senha cadastrada para autenticação |
+| `email` | `string` | **Obrigatório**. E-mail do candidato |
 
-![image](https://github.com/user-attachments/assets/da4a4123-7f59-457f-a98b-8926b62cc3ca)
+Caso o usuário exista:
 
-Resposta:
-200: 
+Response 200:
 ```bash
-"$id": "1",
-"tokenGerado": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlY3J1dGFtZW50b0B0eHRjLmNvbSIsIm5hbWUiOiJUWFQgQ3JpYcOnw7VlcyIsImp0aSI6IjEwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiZW1wcmVzYSIsInJvbGUiOiJlbXByZXNhIiwiZXhwIjoxNzM4ODkwMDk5LCJpc3MiOiJ0YWxlbnRicmlkZ2Vfd2ViYXBpIiwiYXVkIjoidGFsZW50YnJpZGdlX3dlYmFwaSJ9.ePFjWfMkKclBbCzpUgu-piM1bF2kb9HiU6x9Cr5YNyA"
+Usuário excluído com sucesso!
 ```
-Caso usuário inválido ou inexistente:
-404:
-```bash
-"E-mail ou senha inválidos!"
-```
-
-Copie o token gerado e cole no campo "Authorize" presente no topo da aplicação, com isso você poderá utilizar os métodos que são necessários de autenticação de acordo com o tipo de perfil.
-![image](https://github.com/user-attachments/assets/a5ddd417-cd0c-4e35-929b-c755eea417df)
-![image](https://github.com/user-attachments/assets/ab517c34-3335-4095-af48-2cfc86a27547)
-
