@@ -329,6 +329,274 @@ Tudo Ok! Vamos ao Swagger da aplicação:
   ]
 
 ```
+#### Cadastra o candidato no banco de dados
+
+```http
+  POST /api/Candidato
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `CPF` | `string` | **Obrigatório**. CPF do candidato. |
+| `Data de nascimento` | `string` | **Obrigatório**. Data de nascimento do candidato |
+| `Usuario.Nome` | `string` | **Obrigatório**. Nome completo do candidato |
+| `Usuario.Email` | `string` | **Obrigatório**. E-mail do candidato |
+| `Usuario.Senha` | `string` | **Obrigatório**. Senha para autenticação|
+| `Usuario.Logradouro` | `string` | **Obrigatório**. Rua em que localiza o candidato|
+| `Usuario.NumEnder` | `string` | **Obrigatório**. Número do local do candidato|
+| `Usuario.Complemento` | `string` | **Opcional**. Complemento do local do candidato |
+| `Usuario.Bairro` | `string` | **Obrigatório**. Bairro em que se localiza o candidato |
+| `Usuario.Cidade` | `string` | **Obrigatório**. Cidade em que se localiza o candidato |
+| `Usuario.UF` | `string` | **Obrigatório**. Estado em que se localiza o candidato (ex: SP) |
+| `Usuario.Cep` | `string` | **Obrigatório**. CEP em que se localiza o candidato (max 8 caracteres) |
+| `Usuario.Pais` | `string` | **Obrigatório**. País em que se localiza a empresa |
+| `Usuario.TipoEndereco` | `string` | **Obrigatório**. Tipo de endereço do candidato (ex: condominio) |
+| `Usuario.TipoContato` | `string` | **Obrigatório**. Qual o contato a ser cadastrado, ex: wahtsapp, principal etc. |
+| `Usuario.NumContato` | `string` | **Obrigatório**. O número do contato ex: '11999999999' |
+
+#### Retorna todas os candidatos cadastrados no banco de dados
+
+```http
+  GET /api/Candidato/
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `token`      | `string` | **Obrigatório**. token para autenticação na API |
+
+```bash
+  {
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "idUsuario": 22,
+      "cpf": "23456789012",
+      "dataNascimento": "1992-04-10",
+      "aplicacos": {
+        "$id": "3",
+        "$values": []
+      },
+      "certificacaos": {
+        "$id": "4",
+        "$values": []
+      },
+      "escolaridades": {
+        "$id": "5",
+        "$values": []
+      },
+      "experiencia": {
+        "$id": "6",
+        "$values": []
+      },
+      "idUsuarioNavigation": {
+        "$id": "7",
+        "idUsuario": 22,
+        "idEndereco": 5,
+        "idContato": 5,
+        "nome": "Roberto Costa",
+        "email": "roberto.costa@email.com",
+        "senha": "123",
+        "fotoPerfil": null,
+        "candidatos": {
+          "$id": "8",
+          "$values": [
+            {
+              "$ref": "2"
+            }
+          ]
+        },
+        "empresas": {
+          "$id": "9",
+          "$values": []
+        },
+        "idContatoNavigation": {
+          "$id": "10",
+          "idContato": 5,
+          "tipoContato": "Residencial",
+          "numero": "+5528999999999",
+          "usuarios": {
+            "$id": "11",
+            "$values": [
+              {
+                "$ref": "7"
+              }
+            ]
+          }
+        },
+        "idEnderecoNavigation": {
+          "$id": "12",
+          "idEndereco": 5,
+          "logradouro": "Avenida Paulista",
+          "numero": "1000",
+          "complemento": "Sala 1204",
+          "bairro": "Bela Vista",
+          "cidade": "São Paulo",
+          "estado": "SP",
+          "cep": "01310100",
+          "pais": "Brasil",
+          "tipoEndereco": "Comercial",
+          "usuarios": {
+            "$id": "13",
+            "$values": [
+              {
+                "$ref": "7"
+              }
+            ]
+          }
+        }
+      },
+      "idiomas": {
+        "$id": "14",
+        "$values": []
+      },
+      "projetos": {
+        "$id": "15",
+        "$values": []
+      },
+      "skills": {
+        "$id": "16",
+        "$values": []
+      }
+    }
+  ]
+}
+
+```
+#### Atualiza os dados do candidato no banco de dados
+
+```http
+  PUT /api/Candidato
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `CPF` | `string` | **Obrigatório**. CPF do candidato. |
+| `Data de nascimento` | `string` | **Obrigatório**. Data de nascimento do candidato |
+| `Usuario.Nome` | `string` | **Obrigatório**. Nome completo do candidato |
+| `Usuario.Email` | `string` | **Obrigatório**. E-mail do candidato |
+| `Usuario.Senha` | `string` | **Obrigatório**. Senha para autenticação|
+| `Usuario.Logradouro` | `string` | **Obrigatório**. Rua em que localiza o candidato|
+| `Usuario.NumEnder` | `string` | **Obrigatório**. Número do local do candidato|
+| `Usuario.Complemento` | `string` | **Opcional**. Complemento do local do candidato |
+| `Usuario.Bairro` | `string` | **Obrigatório**. Bairro em que se localiza o candidato |
+| `Usuario.Cidade` | `string` | **Obrigatório**. Cidade em que se localiza o candidato |
+| `Usuario.UF` | `string` | **Obrigatório**. Estado em que se localiza o candidato (ex: SP) |
+| `Usuario.Cep` | `string` | **Obrigatório**. CEP em que se localiza o candidato (max 8 caracteres) |
+| `Usuario.Pais` | `string` | **Obrigatório**. País em que se localiza a empresa |
+| `Usuario.TipoEndereco` | `string` | **Obrigatório**. Tipo de endereço do candidato (ex: condominio) |
+| `Usuario.TipoContato` | `string` | **Obrigatório**. Qual o contato a ser cadastrado, ex: wahtsapp, principal etc. |
+| `Usuario.NumContato` | `string` | **Obrigatório**. O número do contato ex: '11999999999' |
+
+#### Busca um candidato específico pelo CPF
+```http
+  GET /api/Candidato/{cpf}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `cpf`      | `string` | **Obrigatório**. CPF do candidato que será listada |
+
+```bash
+  {
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "idUsuario": 22,
+      "cpf": "23456789012",
+      "dataNascimento": "1992-04-10",
+      "aplicacos": {
+        "$id": "3",
+        "$values": []
+      },
+      "certificacaos": {
+        "$id": "4",
+        "$values": []
+      },
+      "escolaridades": {
+        "$id": "5",
+        "$values": []
+      },
+      "experiencia": {
+        "$id": "6",
+        "$values": []
+      },
+      "idUsuarioNavigation": {
+        "$id": "7",
+        "idUsuario": 22,
+        "idEndereco": 5,
+        "idContato": 5,
+        "nome": "Roberto Costa",
+        "email": "roberto.costa@email.com",
+        "senha": "123",
+        "fotoPerfil": null,
+        "candidatos": {
+          "$id": "8",
+          "$values": [
+            {
+              "$ref": "2"
+            }
+          ]
+        },
+        "empresas": {
+          "$id": "9",
+          "$values": []
+        },
+        "idContatoNavigation": {
+          "$id": "10",
+          "idContato": 5,
+          "tipoContato": "Residencial",
+          "numero": "+5528999999999",
+          "usuarios": {
+            "$id": "11",
+            "$values": [
+              {
+                "$ref": "7"
+              }
+            ]
+          }
+        },
+        "idEnderecoNavigation": {
+          "$id": "12",
+          "idEndereco": 5,
+          "logradouro": "Avenida Paulista",
+          "numero": "1000",
+          "complemento": "Sala 1204",
+          "bairro": "Bela Vista",
+          "cidade": "São Paulo",
+          "estado": "SP",
+          "cep": "01310100",
+          "pais": "Brasil",
+          "tipoEndereco": "Comercial",
+          "usuarios": {
+            "$id": "13",
+            "$values": [
+              {
+                "$ref": "7"
+              }
+            ]
+          }
+        }
+      },
+      "idiomas": {
+        "$id": "14",
+        "$values": []
+      },
+      "projetos": {
+        "$id": "15",
+        "$values": []
+      },
+      "skills": {
+        "$id": "16",
+        "$values": []
+      }
+    }
+  ]
+}
+
+```
+
 #### Login na aplicação
 
 ```http
