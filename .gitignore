@@ -4,6 +4,9 @@ TalentBridge_webAPI/obj
 
 out/
 
+##Ignorando variaveis de ambiente
+TalentBridge_webAPI/.env
+
 ## Arquivos de configuração do usuário
 .vs/
 .vscode/

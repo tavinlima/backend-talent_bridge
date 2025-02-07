@@ -9,6 +9,7 @@ using talentbridge_webAPI.Repositories;
 using TalentBridge_webAPI.data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.OpenApi;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,9 +20,24 @@ builder.Services.AddOpenApi(options =>
     options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0;
 });
 
+// 🔹 Carrega variáveis do .env (se existir)
+Env.Load();
+
+// 🔹 Adiciona suporte a variáveis de ambiente
+builder.Configuration.AddEnvironmentVariables();
+
+// 🔹 Obtém a string de conexão da variável de ambiente ou do .env
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
+
+if (string.IsNullOrEmpty(connectionString))
+{
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+}
+
+
 // Configura a string de conex�o para o DbContext
 builder.Services.AddDbContext<TalentBridgeContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
+    options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ICandidatoRepository, CandidatoRepository>();
