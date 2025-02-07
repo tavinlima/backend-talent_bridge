@@ -109,5 +109,224 @@ Para não sobrecarregar o processamento, feche a aplicação e a partir da barra
 Tudo Ok! Vamos ao Swagger da aplicação:
 ![image](https://github.com/user-attachments/assets/4be9e7cd-7b97-4c37-8eb0-a58b6e348664)
 
+- Funcionalidades de empresa:
+#### Cadastra a empresa no banco de dados
 
+```http
+  POST /api/Empresa
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `CNPJ` | `string` | **Obrigatório**. CNPJ da empresa. |
+| `Descricao` | `string` | **Obrigatório**. Breve descrição da empresa e/ou atividades |
+| `Usuario.Nome` | `string` | **Obrigatório**. Nome da empresa |
+| `Usuario.Email` | `string` | **Obrigatório**. E-mail da empresa |
+| `Usuario.Senha` | `string` | **Obrigatório**. Senha para autenticação |
+| `Usuario.Logradouro` | `string` | **Obrigatório**. Rua em que localiza a empresa |
+| `Usuario.NumEnder` | `string` | **Obrigatório**. Número do local da empresa |
+| `Usuario.Complemento` | `string` | **Opcional**. Complemento do local da empresa |
+| `Usuario.Bairro` | `string` | **Obrigatório**. Bairro em que se localiza a empresa |
+| `Usuario.Cidade` | `string` | **Obrigatório**. Cidade em que se localiza a empresa |
+| `Usuario.UF` | `string` | **Obrigatório**. Estado em que se localiza a empresa (ex: SP) |
+| `Usuario.Cep` | `string` | **Obrigatório**. CEP em que se localiza a empresa (max 8 caracteres) |
+| `Usuario.Pais` | `string` | **Obrigatório**. País em que se localiza a empresa |
+| `Usuario.TipoEndereco` | `string` | **Obrigatório**. Tipo de endereço da empresa (ex: condominio) |
+| `Usuario.TipoContato` | `string` | **Obrigatório**. Qual o contato a ser cadastrado, ex: wahtsapp, principal etc. |
+| `Usuario.NumContato` | `string` | **Obrigatório**. O número do contato ex: '11999999999' |
+
+#### Retorna todas as empresas cadastradas no banco de dados
+
+```http
+  GET /api/Empresa/
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `token`      | `string` | **Obrigatório**. token para autenticação na API |
+
+```bash
+  {
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "cnpj": "56789012345678",
+      "idUsuario": 10,
+      "descricao": "Serviços de TI",
+      "avaliacao": 2.9,
+      "idUsuarioNavigation": {
+        "$id": "3",
+        "idUsuario": 10,
+        "idEndereco": 10,
+        "idContato": 10,
+        "nome": "TXT Criações",
+        "email": "recrutamento@txtc.com",
+        "senha": "criptografada",
+        "fotoPerfil": null,
+        "candidatos": {
+          "$id": "4",
+          "$values": []
+        },
+        "empresas": {
+          "$id": "5",
+          "$values": [
+            {
+              "$ref": "2"
+            }
+          ]
+        },
+        "idContatoNavigation": {
+          "$id": "6",
+          "idContato": 10,
+          "tipoContato": "Telefone principal",
+          "numero": "+5511976543880",
+          "usuarios": {
+            "$id": "7",
+            "$values": [
+              {
+                "$ref": "3"
+              }
+            ]
+          }
+        },
+        "idEnderecoNavigation": {
+          "$id": "8",
+          "idEndereco": 10,
+          "logradouro": "Alameda Santos",
+          "numero": "1254",
+          "complemento": "Conjunto 701",
+          "bairro": "Jardins",
+          "cidade": "São Paulo",
+          "estado": "SP",
+          "cep": "01418200",
+          "pais": "Brasil",
+          "tipoEndereco": "Comercial",
+          "usuarios": {
+            "$id": "9",
+            "$values": [
+              {
+                "$ref": "3"
+              }
+            ]
+          }
+        }
+      },
+      "vagas": {
+        "$id": "10",
+        "$values": []
+      }
+    }
+  ]
+
+```
+#### Atualiza os dados da empresa no banco de dados
+
+```http
+  PUT /api/Empresa
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `CNPJ` | `string` | **Obrigatório**. CNPJ da empresa. |
+| `Descricao` | `string` | **Obrigatório**. Breve descrição da empresa e/ou atividades |
+| `Usuario.Nome` | `string` | **Obrigatório**. Nome da empresa |
+| `Usuario.Email` | `string` | **Obrigatório**. E-mail da empresa |
+| `Usuario.Senha` | `string` | **Obrigatório**. Senha para autenticação |
+| `Usuario.Logradouro` | `string` | **Obrigatório**. Rua em que localiza a empresa |
+| `Usuario.NumEnder` | `string` | **Obrigatório**. Número do local da empresa |
+| `Usuario.Complemento` | `string` | **Opcional**. Complemento do local da empresa |
+| `Usuario.Bairro` | `string` | **Obrigatório**. Bairro em que se localiza a empresa |
+| `Usuario.Cidade` | `string` | **Obrigatório**. Cidade em que se localiza a empresa |
+| `Usuario.UF` | `string` | **Obrigatório**. Estado em que se localiza a empresa (ex: SP) |
+| `Usuario.Cep` | `string` | **Obrigatório**. CEP em que se localiza a empresa (max 8 caracteres) |
+| `Usuario.Pais` | `string` | **Obrigatório**. País em que se localiza a empresa |
+| `Usuario.TipoEndereco` | `string` | **Obrigatório**. Tipo de endereço da empresa (ex: condominio) |
+| `Usuario.TipoContato` | `string` | **Obrigatório**. Qual o contato a ser cadastrado, ex: wahtsapp, principal etc. |
+| `Usuario.NumContato` | `string` | **Obrigatório**. O número do contato ex: '11999999999' |
+
+#### Busca uma empresa específica pelo CNPJ
+```http
+  GET /api/Empresa/{cnpj}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `cnpj`      | `string` | **Obrigatório**. CNPJ da empresa que será listada |
+
+```bash
+  {
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "cnpj": "56789012345678",
+      "idUsuario": 10,
+      "descricao": "Serviços de TI",
+      "avaliacao": 2.9,
+      "idUsuarioNavigation": {
+        "$id": "3",
+        "idUsuario": 10,
+        "idEndereco": 10,
+        "idContato": 10,
+        "nome": "TXT Criações",
+        "email": "recrutamento@txtc.com",
+        "senha": "criptografada",
+        "fotoPerfil": null,
+        "candidatos": {
+          "$id": "4",
+          "$values": []
+        },
+        "empresas": {
+          "$id": "5",
+          "$values": [
+            {
+              "$ref": "2"
+            }
+          ]
+        },
+        "idContatoNavigation": {
+          "$id": "6",
+          "idContato": 10,
+          "tipoContato": "Telefone principal",
+          "numero": "+5511976543880",
+          "usuarios": {
+            "$id": "7",
+            "$values": [
+              {
+                "$ref": "3"
+              }
+            ]
+          }
+        },
+        "idEnderecoNavigation": {
+          "$id": "8",
+          "idEndereco": 10,
+          "logradouro": "Alameda Santos",
+          "numero": "1254",
+          "complemento": "Conjunto 701",
+          "bairro": "Jardins",
+          "cidade": "São Paulo",
+          "estado": "SP",
+          "cep": "01418200",
+          "pais": "Brasil",
+          "tipoEndereco": "Comercial",
+          "usuarios": {
+            "$id": "9",
+            "$values": [
+              {
+                "$ref": "3"
+              }
+            ]
+          }
+        }
+      },
+      "vagas": {
+        "$id": "10",
+        "$values": []
+      }
+    }
+  ]
+
+```
 
