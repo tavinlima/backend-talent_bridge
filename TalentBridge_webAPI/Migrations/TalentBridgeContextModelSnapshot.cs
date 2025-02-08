@@ -523,10 +523,6 @@ namespace talentbridge_webAPI.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("email");
 
-                    b.Property<byte[]>("FotoPerfil")
-                        .HasColumnType("varbinary(max)")
-                        .HasColumnName("fotoPerfil");
-
                     b.Property<int?>("IdContato")
                         .HasColumnType("int")
                         .HasColumnName("idContato");

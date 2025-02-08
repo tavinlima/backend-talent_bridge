@@ -56,8 +56,7 @@ namespace talentbridge_webAPI.Migrations
                     idContato = table.Column<int>(type: "int", nullable: true),
                     nome = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
                     email = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    senha = table.Column<string>(type: "varchar(256)", unicode: false, maxLength: 256, nullable: false),
-                    fotoPerfil = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    senha = table.Column<string>(type: "varchar(256)", unicode: false, maxLength: 256, nullable: false)
                 },
                 constraints: table =>
                 {

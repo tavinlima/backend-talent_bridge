@@ -384,7 +384,6 @@ public partial class TalentBridgeContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("email");
-            entity.Property(e => e.FotoPerfil).HasColumnName("fotoPerfil");
             entity.Property(e => e.IdContato).HasColumnName("idContato");
             entity.Property(e => e.IdEndereco).HasColumnName("idEndereco");
             entity.Property(e => e.Nome)
