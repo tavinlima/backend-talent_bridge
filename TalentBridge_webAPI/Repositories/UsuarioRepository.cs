@@ -7,6 +7,7 @@ using talentbridge_webAPI.Interfaces;
 using talentbridge_webAPI.Utils;
 using talentbridge_webAPI.ViewModel;
 using TalentBridge_webAPI.data;
+using TalentBridge_webAPI.DTO;
 
 namespace talentbridge_webAPI.Repositories
 {
@@ -106,15 +107,100 @@ namespace talentbridge_webAPI.Repositories
             return ctx.Usuarios.ToList();
         }
 
+        public async Task<List<Object>> GetUserByEmail(string email)
+        {
+            try
+            {
+                Usuario usuarioBuscado = await GetByEmail(email);
+                List<object> usuarios = new List<object>();
+
+                if (usuarioBuscado.Candidatos.Any())
+                {
+                    usuarios.AddRange(await ctx.Database
+                        .SqlQueryRaw<CandidatoDTO>(@"SELECT 
+                                                    U.idUsuario, 
+                                                    nome, 
+                                                    email, 
+                                                    CPF, 
+                                                    dataNascimento, 
+                                                    logradouro, 
+                                                    ED.numero AS numeroRes, 
+                                                    complemento, 
+                                                    bairro, cidade, 
+                                                    estado, 
+                                                    cep, 
+                                                    pais, 
+                                                    tipoEndereco, 
+                                                    tipoContato,
+                                                    CE.numero  
+                                                    FROM Usuario U 
+                                                    JOIN Candidato C ON U.idUsuario = C.idUsuario 
+                                                    JOIN Endereco ED ON U.idEndereco = ED.idEndereco 
+                                                    JOIN Contato CE ON U.idContato = CE.idContato
+                                                    WHERE email = {0}", email)
+                    .ToListAsync());
+
+                    return usuarios;
+
+                } else
+                {
+                    usuarios.AddRange(await ctx.Database
+                    .SqlQueryRaw<EmpresaDTO>(@"SELECT 
+                                U.idUsuario, 
+                                nome, 
+                                email, 
+                                CNPJ, 
+                                descricao,
+                                avaliacao, 
+                                logradouro, 
+                                ED.numero AS numeroRes, 
+                                complemento, 
+                                bairro, 
+                                cidade, 
+                                estado, 
+                                cep, 
+                                pais, 
+                                tipoEndereco, 
+                                tipoContato, 
+                                C.numero 
+                                FROM Usuario U 
+                                JOIN Empresa E ON U.idUsuario = E.idUsuario 
+                                JOIN Endereco ED ON U.idEndereco = ED.idEndereco 
+                                JOIN Contato C ON U.idContato = C.idContato
+                                WHERE email = {0}", email)
+                    .ToListAsync());
+                    return usuarios;
+                    
+                }
+
+                return null;
+
+                // var usuario = await ctx.Usuarios.AsNoTracking()
+                //.Include(e => e.IdContatoNavigation)
+                //.Include(e => e.IdEnderecoNavigation)
+                //.Include(e => e.Candidatos)
+                //.Include( e => e.Empresas)
+                //.FirstOrDefaultAsync(e => e.Email == email) ?? throw new Exception("Usuário não encontrado. Tente com outro email"); ;
+
+                // return usuario;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
+        }
         public async Task<Usuario> GetByEmail(string email)
         {
             try
             {
+
                 var usuario = await ctx.Usuarios.AsNoTracking()
                .Include(e => e.IdContatoNavigation)
                .Include(e => e.IdEnderecoNavigation)
                .Include(e => e.Candidatos)
-               .Include( e => e.Empresas)
+               .Include(e => e.Empresas)
                .FirstOrDefaultAsync(e => e.Email == email) ?? throw new Exception("Usuário não encontrado. Tente com outro email"); ;
 
                 return usuario;

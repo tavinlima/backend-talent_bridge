@@ -45,7 +45,7 @@ namespace talentbridge_webAPI.Controllers
         {
             try
             {
-                return Ok(await usuarioRepository.GetByEmail(email));
+                return Ok(await usuarioRepository.GetUserByEmail(email));
             }
             catch (Exception error)
             {
