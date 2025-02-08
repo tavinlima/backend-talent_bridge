@@ -111,8 +111,34 @@ Tudo Ok! Vamos ao Swagger da aplicação:
 
 # Hands-on
 
-#### Login na aplicação
+- Funcionalidades de empresa:
+#### Cadastra a empresa no banco de dados
 
+```http
+  POST /api/Empresa
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `CNPJ` | `string` | **Obrigatório**. CNPJ da empresa. |
+| `Descricao` | `string` | **Obrigatório**. Breve descrição da empresa e/ou atividades |
+| `Usuario.Nome` | `string` | **Obrigatório**. Nome da empresa |
+| `Usuario.Email` | `string` | **Obrigatório**. E-mail da empresa |
+| `Usuario.Senha` | `string` | **Obrigatório**. Senha para autenticação |
+| `Usuario.Logradouro` | `string` | **Obrigatório**. Rua em que localiza a empresa |
+| `Usuario.NumEnder` | `string` | **Obrigatório**. Número do local da empresa |
+| `Usuario.Complemento` | `string` | **Opcional**. Complemento do local da empresa |
+| `Usuario.Bairro` | `string` | **Obrigatório**. Bairro em que se localiza a empresa |
+| `Usuario.Cidade` | `string` | **Obrigatório**. Cidade em que se localiza a empresa |
+| `Usuario.UF` | `string` | **Obrigatório**. Estado em que se localiza a empresa (ex: SP) |
+| `Usuario.Cep` | `string` | **Obrigatório**. CEP em que se localiza a empresa (max 8 caracteres) |
+| `Usuario.Pais` | `string` | **Obrigatório**. País em que se localiza a empresa |
+| `Usuario.TipoEndereco` | `string` | **Obrigatório**. Tipo de endereço da empresa (ex: condominio) |
+| `Usuario.TipoContato` | `string` | **Obrigatório**. Qual o contato a ser cadastrado, ex: wahtsapp, principal etc. |
+| `Usuario.NumContato` | `string` | **Obrigatório**. O número do contato ex: '11999999999' |
+
+#### Login na aplicação
+Realize o login para utilizar as outras funcionalidades do CRUD de empresas
 ```http
   POST /api/Login
 ```
@@ -140,41 +166,11 @@ Copie o token gerado e cole no campo "Authorize" presente no topo da aplicação
 ![image](https://github.com/user-attachments/assets/a5ddd417-cd0c-4e35-929b-c755eea417df)
 ![image](https://github.com/user-attachments/assets/ab517c34-3335-4095-af48-2cfc86a27547)
 
-- Funcionalidades de empresa:
-#### Cadastra a empresa no banco de dados
-
-```http
-  POST /api/Empresa
-```
-
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `CNPJ` | `string` | **Obrigatório**. CNPJ da empresa. |
-| `Descricao` | `string` | **Obrigatório**. Breve descrição da empresa e/ou atividades |
-| `Usuario.Nome` | `string` | **Obrigatório**. Nome da empresa |
-| `Usuario.Email` | `string` | **Obrigatório**. E-mail da empresa |
-| `Usuario.Senha` | `string` | **Obrigatório**. Senha para autenticação |
-| `Usuario.Logradouro` | `string` | **Obrigatório**. Rua em que localiza a empresa |
-| `Usuario.NumEnder` | `string` | **Obrigatório**. Número do local da empresa |
-| `Usuario.Complemento` | `string` | **Opcional**. Complemento do local da empresa |
-| `Usuario.Bairro` | `string` | **Obrigatório**. Bairro em que se localiza a empresa |
-| `Usuario.Cidade` | `string` | **Obrigatório**. Cidade em que se localiza a empresa |
-| `Usuario.UF` | `string` | **Obrigatório**. Estado em que se localiza a empresa (ex: SP) |
-| `Usuario.Cep` | `string` | **Obrigatório**. CEP em que se localiza a empresa (max 8 caracteres) |
-| `Usuario.Pais` | `string` | **Obrigatório**. País em que se localiza a empresa |
-| `Usuario.TipoEndereco` | `string` | **Obrigatório**. Tipo de endereço da empresa (ex: condominio) |
-| `Usuario.TipoContato` | `string` | **Obrigatório**. Qual o contato a ser cadastrado, ex: wahtsapp, principal etc. |
-| `Usuario.NumContato` | `string` | **Obrigatório**. O número do contato ex: '11999999999' |
-
 #### Retorna todas as empresas cadastradas no banco de dados
 
 ```http
   GET /api/Empresa/
 ```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `token`      | `string` | **Obrigatório**. token para autenticação na API |
 
 ```bash
   {
@@ -387,15 +383,40 @@ Copie o token gerado e cole no campo "Authorize" presente no topo da aplicação
 | `Usuario.TipoContato` | `string` | **Obrigatório**. Qual o contato a ser cadastrado, ex: wahtsapp, principal etc. |
 | `Usuario.NumContato` | `string` | **Obrigatório**. O número do contato ex: '11999999999' |
 
+#### Login na aplicação
+Realize o login para utilizar as outras funcionalidades do CRUD de candidato
+```http
+  POST /api/Login
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `email` | `string` | **Obrigatório**. E-mail cadastrado para autenticação. |
+| `senha` | `string` | **Obrigatório**. Senha cadastrada para autenticação |
+
+![image](https://github.com/user-attachments/assets/da4a4123-7f59-457f-a98b-8926b62cc3ca)
+
+Resposta:
+200: 
+```bash
+"$id": "1",
+"tokenGerado": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlY3J1dGFtZW50b0B0eHRjLmNvbSIsIm5hbWUiOiJUWFQgQ3JpYcOnw7VlcyIsImp0aSI6IjEwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiZW1wcmVzYSIsInJvbGUiOiJlbXByZXNhIiwiZXhwIjoxNzM4ODkwMDk5LCJpc3MiOiJ0YWxlbnRicmlkZ2Vfd2ViYXBpIiwiYXVkIjoidGFsZW50YnJpZGdlX3dlYmFwaSJ9.ePFjWfMkKclBbCzpUgu-piM1bF2kb9HiU6x9Cr5YNyA"
+```
+Caso usuário inválido ou inexistente:
+404:
+```bash
+"E-mail ou senha inválidos!"
+```
+
+Copie o token gerado e cole no campo "Authorize" presente no topo da aplicação, com isso você poderá utilizar os métodos que são necessários de autenticação de acordo com o tipo de perfil.
+![image](https://github.com/user-attachments/assets/a5ddd417-cd0c-4e35-929b-c755eea417df)
+![image](https://github.com/user-attachments/assets/ab517c34-3335-4095-af48-2cfc86a27547)
+
 #### Retorna todas os candidatos cadastrados no banco de dados
 
 ```http
   GET /api/Candidato/
 ```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `token`      | `string` | **Obrigatório**. token para autenticação na API |
 
 ```bash
   {
