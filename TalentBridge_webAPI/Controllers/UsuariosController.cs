@@ -55,7 +55,7 @@ namespace talentbridge_webAPI.Controllers
         }
 
         [HttpDelete]
-        [Authorize]
+        [Authorize(Roles = "candidato,empresa")]
         public async Task<IActionResult> Delete(string email)
         {
             try

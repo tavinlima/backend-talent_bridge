@@ -28,6 +28,20 @@ namespace talentbridge_webAPI.Controllers
                 return BadRequest(error);
             }
         }
+
+        [HttpGet("{cnpj}")]
+        public async Task<IActionResult> GetByCnpj(string cnpj)
+        {
+            try
+            {
+                return Ok(await vagaRepo.GetByCNPJ(cnpj));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
         [HttpPatch("{idVaga}")]
         [Authorize(Roles = "empresa")]
         public async Task<IActionResult> darFeedback(int idVaga)

@@ -18,5 +18,6 @@ namespace talentbridge_webAPI.Repositories
             ctx.SaveChanges();
             return contato;
         }
+
     }
 }

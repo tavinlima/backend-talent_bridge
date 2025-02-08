@@ -74,7 +74,7 @@ namespace talentbridge_webAPI.Repositories
 
         public async Task<List<Vaga>> GetByCNPJ(string CNPJ)
         {
-            return await ctx.Vagas
+            return await ctx.Vagas.AsNoTracking()
                 .Include(e => e.CnpjNavigation)
                 .Where(v => v.CnpjNavigation.Cnpj == CNPJ)
                 .ToListAsync();
