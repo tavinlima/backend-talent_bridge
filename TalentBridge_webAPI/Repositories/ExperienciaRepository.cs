@@ -39,7 +39,10 @@ namespace talentbridge_webAPI.Repositories
 
         public async Task<List<Experiencium>> GetByCpf(string cpf)
         {
-            return await ctx.Experiencia.Include(e => e.CpfNavigation).ThenInclude(e => e.IdUsuarioNavigation).Where(e => e.Cpf == cpf).ToListAsync();
+            return await ctx.Experiencia.AsNoTracking()
+                .Include(e => e.CpfNavigation)
+                .ThenInclude(e => e.IdUsuarioNavigation)
+                .Where(e => e.Cpf == cpf).ToListAsync();
         }
 
         public async  Task<Experiencium> GetExperiencia(int id)

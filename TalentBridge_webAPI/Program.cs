@@ -47,6 +47,7 @@ builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
 builder.Services.AddScoped<IVagaRepository, VagaRepository>();
 builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 builder.Services.AddScoped<IAplicacaoRepository, AplicacaoRepository>();
+builder.Services.AddScoped<IExperienciaRepository, ExperienciaRepository>();
 
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
