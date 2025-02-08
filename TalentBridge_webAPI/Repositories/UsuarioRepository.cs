@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using talentbridge_webAPI.Domains;
@@ -107,10 +108,23 @@ namespace talentbridge_webAPI.Repositories
 
         public async Task<Usuario> GetByEmail(string email)
         {
-            return await ctx.Usuarios.AsNoTracking()
-                .Include(e => e.IdContatoNavigation)
-                .Include(e => e.IdEnderecoNavigation)
-                .FirstOrDefaultAsync(e => e.Email == email);
+            try
+            {
+                var usuario = await ctx.Usuarios.AsNoTracking()
+               .Include(e => e.IdContatoNavigation)
+               .Include(e => e.IdEnderecoNavigation)
+               .Include(e => e.Candidatos)
+               .Include( e => e.Empresas)
+               .FirstOrDefaultAsync(e => e.Email == email) ?? throw new Exception("Usuário não encontrado. Tente com outro email"); ;
+
+                return usuario;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
         }
 
         public Usuario Login(string email, string senha)

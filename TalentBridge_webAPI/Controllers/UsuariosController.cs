@@ -37,7 +37,21 @@ namespace talentbridge_webAPI.Controllers
             {
                 return BadRequest(error);
             }
-            
+
+        }
+
+        [HttpGet("{email}")]
+        public async Task<IActionResult> GetByEmail(string email)
+        {
+            try
+            {
+                return Ok(await usuarioRepository.GetByEmail(email));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+
         }
 
         [HttpDelete]
