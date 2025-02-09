@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using talentbridge_webAPI.Interfaces;
+using talentbridge_webAPI.ViewModel;
+using TalentBridge_webAPI.ViewModel;
 
 namespace talentbridge_webAPI.Controllers
 {
@@ -49,6 +51,20 @@ namespace talentbridge_webAPI.Controllers
             try
             {
                 return Ok(await vagaRepo.UpdateSituation(idVaga));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromForm] CadastroVagasViewModel vaga)
+        {
+            try
+            {
+                //Inserir validação para tirar pontos e verificar se é valido
+                return Ok(await vagaRepo.Create(vaga));
             }
             catch (Exception error)
             {

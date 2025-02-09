@@ -2,6 +2,7 @@
 using talentbridge_webAPI.Domains;
 using talentbridge_webAPI.Interfaces;
 using TalentBridge_webAPI.data;
+using TalentBridge_webAPI.ViewModel;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace talentbridge_webAPI.Repositories
@@ -17,12 +18,33 @@ namespace talentbridge_webAPI.Repositories
             this.empresaRepository = empresaRepository;
             this.usuarioRepository = usuarioRepository;
         }
-        public async Task<Vaga> Create(Vaga vaga)
+        public async Task<Vaga> Create(CadastroVagasViewModel vaga)
         {
-            ctx.Vagas.Add(vaga);
-            await ctx.SaveChangesAsync();
+            try
+            {
+                Vaga novaVaga = new Vaga()
+                {
+                    Titulo = vaga.Titulo,
+                    Senioridade = vaga.Senioridade,
+                    Cnpj = vaga.Cnpj,
+                    Descricao = vaga.Descricao,
+                    ModeloTrabalho = vaga.ModeloTrabalho,
+                    DataInicio = vaga.DataInicio,
+                    DataFim = vaga.DataFim,
+                    Disponivel = vaga.Disponivel
+                };
 
-            return vaga;
+                ctx.Vagas.Add(novaVaga);
+                await ctx.SaveChangesAsync();
+
+                return novaVaga;
+
+            }
+            catch (Exception error)
+            {
+                throw new Exception(error.Message);
+            }
+            
         }
 
         public Task<Vaga> Delete(int Id)
