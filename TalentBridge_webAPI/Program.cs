@@ -114,7 +114,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "https://backend-talent-bridge-kbiu.onrender.com", "https://talent-bridge-psi.vercel.app/")
+        policy.WithOrigins("http://localhost:5173", "https://backend-talent-bridge-kbiu.onrender.com", "https://talent-bridge-psi.vercel.app")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
